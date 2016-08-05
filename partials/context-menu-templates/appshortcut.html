@@ -1,0 +1,10 @@
+<md-menu-content layout="column" layout-align="start center" width="3" style="z-index:1;" class="md-{{vm.shellConfig.themeconfiguration.palettename}}-{{vm.shellConfig.themeconfiguration.theme}}-theme notification-dropdown-container">
+    <md-menu-item style="width:100%">
+        <md-button aria-label="no new notifications" ng-click="vm.findAppInfo($event,componentdata)">
+            <md-icon md-svg-icon="icons/ic_info_outline_24px.svg" alt="User Profile"></md-icon>Infromation</md-button>
+    </md-menu-item>
+    <md-menu-item style="width:100%">
+        <md-button aria-label="see all" ng-click="vm.removeAppFromPanel(componentdata,$event,$index)">
+            <md-icon md-svg-icon="icons/ic_delete_24px.svg" alt="User Profile"></md-icon> Delete </md-button>
+    </md-menu-item>
+</md-menu-content>

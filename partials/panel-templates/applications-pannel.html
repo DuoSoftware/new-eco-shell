@@ -1,0 +1,22 @@
+<!--
+<div class="md-framework-parent-panel-layout">
+    <div class="md-framework-panel-content-container" style="width:100%; height:100%;" layout="column" layout-align="start start">
+        <perfect-scrollbar class="systemTrayScroller" id="systemTrayScroller" wheel-propagation="false" wheel-speed="2" suppressScrollX="true" layout="row" layout-align="center start">
+            <div layout="row" layout-align="start start" layout-wrap class="md-framework-pannel-apptray">
+                <div ng-repeat="componentdata in allApps | filter:globalSearchKeyword" component-generator component="'appshortcut'" componentdata="componentdata" flex-sm="30" flex-md="20" flex-lg="20" flex-gt-lg="20" style="padding:10px;height:200px;" ng-if="componentdata.Apps == undefined"> </div>
+                <div ng-repeat="componentdata in allApps | filter:globalSearchKeyword" component-generator component="'appbundle'" componentdata="componentdata" flex-sm="30" flex-md="20" flex-lg="20" flex-gt-lg="20" style="padding:10px;height:200px;" ng-if="componentdata.Apps !== undefined"> </div>
+            </div>
+        </perfect-scrollbar>
+    </div>
+</div>-->
+<div class="selectedSystemPanel md-framework-pannel-apptray" droppable layout="row" layout-align="center center">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="2">
+        <div gridster="vm.gridsterOpts">
+            <ul>
+                <li gridster-item="vm.widgetItemMap" ng-repeat="componentdata in panel.panelComponents | filter:globalSearchKeyword">
+                    <div component-generator component="componentdata.comp_Type" componentdata="componentdata.comp_Data" class="wh-inherit" componentdraggable="false"></div>
+                </li>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+</div>

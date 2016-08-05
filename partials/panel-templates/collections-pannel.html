@@ -1,0 +1,50 @@
+<!-- This is the collection panel template -->
+<style>
+    .md-framework-parent-panel-layout {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .md-framework-panel-content-container {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .whiteFrameContainer {
+        height: 35%;
+        width: 35%;
+    }
+
+</style>
+<!--
+<div class="md-framework-parent-panel-layout">
+    <div class="md-framework-panel-content-container" layout="column" layout-align="start start">
+        <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="2" suppressScrollX="true">
+            <div gridster="collectionpanelOpts" class="md-framework-pannel-apptray" style="height:1085px !important;max-width:100vw !important;" on-long-press="showPanelEditTray($event,panel)" ng-dblclick="showPanelEditTray($event,panel)">
+                <ul>
+                    <li gridster-item="widgetItemMap" ng-repeat="componentdata in panel.panelComponents | filter:globalSearchKeyword">
+                        <div component-generator component="componentdata.comp_Type" componentdata="componentdata.comp_Data" class="wh-inherit"></div>
+                    </li>
+                </ul>
+            </div>
+        </perfect-scrollbar>
+    </div>
+</div>
+<p>{{selectedPanel}}</p>
+-->
+<div class="selectedSystemPanel md-framework-pannel-apptray" droppable layout="row" layout-align="center center">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="2">
+        <div gridster="vm.gridsterOpts">
+            <ul>
+                <li gridster-item="vm.widgetItemMap" ng-repeat="componentdata in panel.panelComponents | filter:globalSearchKeyword" style="z-index:1 !important;" data-context-menu="partials/context-menu-templates/appshortcut.html">
+                    <md-button ng-show="vm.showPanelEditModeFlag" style="position:absolute;z-index:1;" ng-click="vm.removeAppFromPanel(componentdata,$event,$index)">
+                        <md-icon md-svg-icon="icons/ic_delete_24px.svg" alt="delete" style="color:white;"></md-icon>
+                    </md-button>
+                    <div component-generator component="componentdata.comp_Type" componentdata="componentdata.comp_Data" class="wh-inherit" componentdraggable="false"></div>
+                </li>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+</div>

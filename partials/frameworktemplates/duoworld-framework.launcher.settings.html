@@ -1,0 +1,382 @@
+<style>
+    /*Dont change these styles under any circumstance !*/
+    
+    .dw-default-application-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        /*        background-color: #455A64;*/
+    }
+    
+    .dw-default-application-header-control-bar {
+        position: relative;
+        z-index: 1;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 48px;
+        padding: 0px 8px 0px 8px;
+        box-sizing: border-box;
+    }
+    
+    .cad24 {
+        color: #999999;
+    }
+    
+    .dw-default-application-frame-inner-container {
+        width: 100%;
+        height: calc(100% - 48px);
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    
+    .dw-default-application-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 300px;
+        background-color: rgba(100, 100, 100, 1);
+        transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -webkit-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+    }
+    
+    .dw-default-application-banner-cover {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(30, 30, 30, 0.3);
+    }
+    
+    .dw-appContainerBlock {
+        position: absolute;
+        top: 48px;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: calc(100% - 48px);
+        overflow-y: auto;
+    }
+    
+    .dw-appInnerContainer {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+    }
+    
+    .dw-appContentSection {
+        position: relative;
+        width: 960px;
+        height: auto;
+        background: rgb(255, 255, 255);
+        margin: 20px auto;
+    }
+    
+    .dw-default-application-primaryBtn {
+        position: fixed;
+        top: 320px;
+        right: calc(50% - 560px);
+    }
+    
+    .dw-pannelEditingSection {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        background: rgba(200, 200, 200, 1);
+    }
+    
+    .dw-pannelRepNodes {
+        width: 100%;
+        height: 100%;
+        /*        margin: 10px;*/
+        background: rgba(255, 255, 255, 0.4);
+        font-size: 22px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.76);
+    }
+    
+    .dw-pannelRepNodes .wrap {
+        width: 100%;
+        height: inherit;
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5));
+        padding: 10px;
+    }
+    
+    .dw-pannelRepNodes .wrap h3 {
+        font-size: 28px;
+        color: white;
+    }
+    
+    .dw-pannelRepNodes .wrap p {
+        margin: 5px;
+    }
+    
+    .addPanelCtrl {
+        background: #cddc39;
+        color: #fff;
+        font-weight: 400;
+    }
+    
+    .customListInputContainer {
+        padding: 2px !important;
+    }
+    
+    .dw-themeSelectionSection {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        /*        background: rgba(200, 200, 200, 1);*/
+    }
+    
+    .dw-themeRepNodes {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-bottom: solid 25px rgba(10, 10, 10, 1);
+        background: rgba(100, 100, 100, 1);
+        font-size: 22px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 1);
+        text-shadow: 1px 1px 2px rgba(10, 10, 10, 1);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -webkit-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+    }
+    
+    .dw-themeRepNodes:hover {
+        box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.14), 0px 16px 24px 2px rgba(0, 0, 0, 0.098), 0px 6px 30px 5px rgba(0, 0, 0, 0.084);
+    }
+    
+    .dw-wallpaperSelectionSection {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        background: rgba(200, 200, 200, 1);
+    }
+    
+    .dw-wallPaperRepNodes {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 1);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -webkit-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -moz-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+        -o-transition: all 0.3s cubic-bezier(.55, 0, .1, 1);
+    }
+    
+    .dw-wallPaperRepNodes:hover {
+        box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.14), 0px 16px 24px 2px rgba(0, 0, 0, 0.098), 0px 6px 30px 5px rgba(0, 0, 0, 0.084);
+    }
+
+</style>
+<!--<frameworkapp-container routedappname="'Settings'" routedappimguri="'images/adas.jpg'" accentpalette="$root.shellConfig.themeconfiguration.accentpalette">-->
+<coreapp-container routedappname="'Settings'" routedappiconuri="routedAppIconUri" accentpalette="vm.shellConfig.themeconfiguration.primarypalette">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="6">
+        <md-content id="dw-settings-app" md-theme="{{settings.shellConfig.themeconfiguration.palettename}}-{{settings.shellConfig.themeconfiguration.theme}}" md-theme-watch="true">
+            <div style="width:100%;height:48px;background-color:{{settings.shellConfig.themeconfiguration.primarypalette}};position:fixed;top:0px;left:0px;"></div>
+            <div style="width:100%;" layout="column" layout-align="start center">
+                <div class="core-app-main-banner" layout="column" layout-align="center start" style="background-color:{{settings.shellConfig.themeconfiguration.primarypalette}};background-image:url({{settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageurl}});background-size:cover;background-blend-mode:luminosity;">
+
+                    <div hide-xs layout="row" layout-align="end center" style="right:0px;position:absolute;z-index:20;">
+                        <div ng-repeat="p in settings.getPanelCount(settings.shellConfig.docklayoutconfiguration.pannelcollection.length) track by $index" class="dw-pannelRepNodes" layout="column" layout-align="center center" style="background-color:rgba(255, 255, 255, 0.0);width:calc((100vw - 50px )/4);height:180px;margin:5px;">
+
+                            <md-button ng-click="settings.showAddNewPanel($event);">
+                                <div layout="column" layout-align="center center" style="height: 170px;
+    width: calc(25vw - 10px);
+    background-color: rgba(255,255,255,0.1);">
+                                    <md-icon md-svg-icon="icons/ic_add_24px.svg" alt="Pagination" style="margin:5px;"></md-icon>
+                                    Add New Panel
+                                </div>
+                            </md-button>
+                        </div>
+                    </div>
+                    <div hide-xs gridster="settings.gridsterOpts" style="cursor: pointer;
+    width:100%;margin:0px;max-height:200px;">
+                        <ul>
+                            <li gridster-item="settings.customItemMap" ng-repeat="pannelRepNode in settings.shellConfig.docklayoutconfiguration.pannelcollection">
+                                <div class="md-whiteframe-z2 dw-pannelRepNodes" layout="column" layout-align="center center">
+                                    <div layout="column" layout-align="end center" class="wrap">
+                                        <h3>{{pannelRepNode.panelArrangement + 1}}</h3>
+                                        <p>{{pannelRepNode.panelTitle}}</p>
+
+                                        <md-button ng-click="settings.deletePanel(pannelRepNode)" ng-show="pannelRepNode.panelType === 'Collections'" aria-label="delete panel">
+                                            delete
+                                        </md-button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p hide-xs class="grid-hint">Drag tiles to change the position of panels</p>
+                </div>
+
+                <div class="core-app-content-flat" layout="column" layout-align="start center">
+                    <div class="title" layout="row" layout-align="space-between center">
+                        <div layout="column" layout-align="center start ">
+                            <h3>Dock Options</h3>
+                            <p>customize your panels</p>
+                        </div>
+
+                    </div>
+                    <div class="content">
+                        <md-list class="list">
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_3d_rotation_24px.svg" alt="Tansition Effect"></md-icon>
+                                <p>Transition Effect</p>
+                                <md-input-container class="customListInputContainer">
+                                    <!--                                            <label>Select Effect</label>-->
+                                    <md-select ng-model="settings.shellConfig.docklayoutconfiguration.dockoptions.transitioneffect" placeholder="Select Effect">
+                                        <md-option value="slide">Slide</md-option>
+                                        <md-option value="fade">Cross Fade</md-option>
+                                        <md-option value="coverflow">Cover Flow</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_open_with_24px.svg" alt="Layout Direction"></md-icon>
+                                <p>Layout Direction</p>
+                                <md-input-container class="customListInputContainer">
+                                    <!--                                            <label>Select Direction</label>-->
+                                    <md-select ng-model="settings.shellConfig.docklayoutconfiguration.dockoptions.layoutdirection" placeholder="Select Direction">
+                                        <md-option value="vertical">Vertical</md-option>
+                                        <md-option value="horizontal">Horizontal</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_hdr_weak_24px.svg" alt="Pagination"></md-icon>
+                                <p>Pagination</p>
+                                <md-switch class="md-secondary md-primary" ng-model="settings.shellConfig.docklayoutconfiguration.dockoptions.pagination"></md-switch>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_cached_24px.svg" alt="Loop Pannels"></md-icon>
+                                <p>Loop Pannels</p>
+                                <md-switch class="md-secondary md-primary" ng-model="settings.shellConfig.docklayoutconfiguration.dockoptions.looppannels"></md-switch>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </div>
+                <div class="core-app-content-banner" layout="column" layout-align="center center" style="background-image:url({{settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageurl}});background-size:cover;background-color:{{settings.shellConfig.themeconfiguration.primarypalette}};">
+                    <div class="core-app-content-flat" layout-gt-sm="row" layout-align-gt-sm="start center" layout="column" layout-align="start center">
+                        <div class="banner-title" layout="column" layout-align="center center" flex="30">
+                            <h3>Themes</h3>
+                            <p>colour up your shell</p>
+                        </div>
+                        <div class="content" layout-gt-sm="row" layout-align-gt-sm="center start" layout="column" layout-align="start center">
+                            <md-card flex class="theme-card md-whiteframe-10dp" layout="row" layout-align="space-around end">
+                                <div layout="column" layout-align="center center" layout-padding>
+                                    <div layout="row" layout-align="center center" layout-margin>
+                                        <div layout="column" layout-align="center center">
+                                            <h3>Material Dark</h3>
+                                            <p>Dark night rises</p>
+                                        </div>
+                                        <md-switch ng-model="settings.shellConfig.themeconfiguration.theme" ng-true-value="'light'" ng-false-value="'dark'" aria-label="Switch 1">
+                                        </md-switch>
+                                        <div layout="column" layout-align="center center" layout-margin>
+                                            <h3>Material Light</h3>
+                                            <p>Dawn of the justice</p>
+                                        </div>
+                                    </div>
+                                    <div layout="row" layout-align="center center" layout-wrap>
+                                        <div class="color-palet" ng-repeat="theme in settings.defaultThemes" style="background:{{theme.primarypalette}};" ng-click="settings.changeTheme(theme,settings.shellConfig.themeconfiguration.theme)"></div>
+                                    </div>
+                                </div>
+                                <div layout="row" layout-align="end end">
+                                    <md-icon md-svg-icon="images/sofa.svg" alt="sofa" style="height:150px;width:150px;margin:20px;margin-right:-40px;"></md-icon>
+                                    <md-icon md-svg-icon="images/lamp.svg" alt="Lamp" style="height:250px;width:150px;"></md-icon>
+                                    <div class="lamp-light-{{settings.shellConfig.themeconfiguration.theme}}"></div>
+                                </div>
+                            </md-card>
+                        </div>
+                    </div>
+                    <div class="core-app-content-flat" ng-if="showDefaultWallpapers" layout="row" layout-align="center start" layout-wrap>
+                        <md-card ng-repeat="wallpaper in settings.defaultWallPapers" class="md-whiteframe-10dp wallpaper-card" layout="column" layout-align="end center" style="background-image:url({{wallpaper.thumb}});background-size:cover;" ng-click="vm.changeWallPaper(wallpaper)">
+                            <div style="width:35px;height:35px;border-radius:100%;background-color:{{settings.shellConfig.themeconfiguration.primarypalette}};" ng-if="settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageurl == wallpaper.imgUrl" layout="row" layout-align="center center">
+                                <md-icon md-svg-icon="icons/ic_done_24px.svg" alt="selected background image" style="color:white;"></md-icon>
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+
+                <div class="core-app-content-flat" layout="column" layout-align="start start">
+                    <div class="title" layout="row" layout-align="space-between center">
+                        <div layout="column" layout-align="center start ">
+                            <h3>Background for shell</h3>
+                            <p>make it beautiful</p>
+                        </div>
+                        <md-button class="md-primary" ng-click="settings.uploadNewWallpaper();" aria-label="my wallpapers">
+
+                            Upload a Wallpaper
+                            <md-progress-linear md-mode="indeterminate" ng-if="settings.uploadingWallpaper"></md-progress-linear>
+                        </md-button>
+                    </div>
+                    <input id="selectPicture" type="file" file-model="myFile" style="visibility:hidden;" onchange="angular.element(this).scope().settings.file_changed(this)">
+                    <div class="content" layout="row" layout-align="center start" layout-wrap>
+                        <md-card ng-repeat="wallpaper in settings.defaultWallPapers" class="md-whiteframe-10dp wallpaper-card" layout="column" layout-align="end center" style="background-image:url({{wallpaper.imgUrl}});background-size:cover;" ng-click="settings.changeWallPaper(wallpaper)">
+                            <div style="width:35px;height:35px;border-radius:100%;background-color:{{settings.shellConfig.themeconfiguration.primarypalette}};" ng-if="settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageurl == wallpaper.imgUrl" layout="row" layout-align="center center">
+                                <md-icon md-svg-icon="icons/ic_done_24px.svg" alt="selected background image" style="color:white;"></md-icon>
+                            </div>
+                        </md-card>
+
+                    </div>
+                </div>
+
+
+                <md-divider class="core-app-content-divider"></md-divider>
+                <div class="core-app-content-flat" layout="column" layout-align="start center">
+                    <div class="title" layout="row" layout-align="space-between center">
+                        <div layout="column" layout-align="center start ">
+                            <h3>Background Options</h3>
+                            <p>a bit more customizable</p>
+                        </div>
+
+                    </div>
+                    <div class="content">
+                        <md-list class="list">
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_blur_on_24px.svg" alt="Apply Blur Overlay"></md-icon>
+                                <p>Apply Blur Overlay</p>
+                                <md-switch class="md-secondary md-primary" ng-model="settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageblur.status"></md-switch>
+                            </md-list-item>
+                            <md-list-item ng-if="settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageblur.status">
+                                <md-slider flex md-discrete ng-model="settings.shellConfig.backgroundconfiguration[2].backgroundimageconfig.imageblur.amount" step="5" min="5" max="20" aria-label="blur"> </md-slider>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_texture_24px.svg" alt="Apply Overlay Texture"></md-icon>
+                                <p>Apply Overlay Texture</p>
+                                <md-switch class="md-secondary md-primary" ng-model="settings.shellConfig.backgroundconfiguration[0].backgroundtypeactive"></md-switch>
+                            </md-list-item>
+                            <md-divider></md-divider>
+                            <md-list-item>
+                                <md-icon md-svg-icon="icons/ic_gradient_24px.svg" alt="Apply Gradient Filter"></md-icon>
+                                <p>Apply Gradient Filter</p>
+                                <md-switch class="md-secondary md-primary" ng-model="settings.shellConfig.backgroundconfiguration[1].backgroundtypeactive"></md-switch>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </div>
+
+
+            </div>
+        </md-content>
+    </perfect-scrollbar>
+</coreapp-container>
+<!--</frameworkapp-container>-->

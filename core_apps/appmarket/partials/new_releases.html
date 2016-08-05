@@ -1,0 +1,54 @@
+
+<style>
+ .showbox.scale:hover
+ {
+  cursor:pointer;-webkit-transform:scale(1.04);
+  -moz-transform:scale(1.04);
+  -o-transform:scale(1.04);
+  -ms-transform:scale(1.04);
+  transform:scale(1.04)
+ }
+.showbox{
+  -webkit-transition:.2s ease-in-out;
+  -moz-transition:.2s ease-in-out;
+  -o-transition:.2s ease-in-out;
+  transition:.2s ease-in-out
+ }
+
+</style>
+<div style="padding-top:120px;width:100%;padding-bottom:60px;">
+<center id="inline" style="background;max-width:960px;margin:0 auto">
+	
+
+		<li ng-repeat="product in products | filter:{Paid:paidOrFree||undefined} | filter:searchText||undefined" class="my-animation"> 
+			<md-card style="width:200px;" id="cardApp" class="tint showbox scale" ng-click="viewProduct(product)">
+				<img src="{{product.displayPicture}}" style="min-width:128px;height:144px; width: 144px;margin: 0 auto;"  alt="Washed Out"/>
+				<md-divider></md-divider>
+				<md-card-content style="padding:0px;padding-left:5px !important;background:url('img/1.png')">
+					<div style="position:absolute;height:60px;width:10px;background:{{product.tileColor}};-ms-transform: skewX(-20deg);-webkit-transform: skewX(-20deg); transform: skewX(-20deg);left: 120px;"></div>
+					<div class="md-actions" layout="row" layout-align="space-between center" style="margin:0">
+					<h2 class="md-title" style="margin:0;margin-top:5px;font-size:18px;color:white">{{product.name}}</h2>
+					<div style="background:{{product.tileColor}};font-size: 14px;border: 1px solid #ececec;padding-left: 5px;padding-right: 5PX;padding-top: 2px;padding-bottom: 2px;margin-right:5px;margin-top:10px;color:white"><span ng-if="product.price == 0">Get!</span><span ng-if="product.price != 0">Buy!</span></div>
+					</div>
+	
+					
+					<div class="md-actions" layout="row" layout-align="space-between center" style="margin:0">
+					
+					<div star-rating rating="product.totalVotes / product.voteCount | ceil" colour="white" style="margin-top: -3px;"
+						read-only="true" max-rating="5">
+					</div>
+					<text style="color:black;font-weight:700;font-size:15px;margin-top: 8px;margin-right:5px;">
+						<div ng-if="product.price != 0"><span ng-if="product.price!='Free'">Rs. </span>{{product.price}}</div>
+						<div ng-if="product.price == 0">Free</div>
+					</text>
+					</div>
+				</md-card-content>
+				
+			</md-card>
+		</li> 
+
+
+</center>
+</div>
+<ng-md-icon icon="new_releases" style="margin-top: 18px;margin-right: 18px;fill:#D1D1D1;bottom:20px;right:20px;height:200px;width:200px;position:fixed;z-index:-1" size="200px"></ng-md-icon>
+

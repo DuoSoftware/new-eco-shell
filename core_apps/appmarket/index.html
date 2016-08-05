@@ -1,0 +1,159 @@
+<!--
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+
+<head>
+        <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" type="text/css" href="core_apps/appmarket/css/child_app_styles.min.css">
+    <link rel="stylesheet" href="core_apps/appmarket/css/directive_library.css">
+    <link rel="stylesheet" href="core_apps/appmarket/css/style.css">
+    <link rel="stylesheet" href="core_apps/appmarket/css/v-accordion.min.css">
+    <link rel="stylesheet" href="core_apps/appmarket/css/jquery.bxslider.css">
+</head>
+
+
+<body ng-controller="ViewCtrl as ctrl" layout="column" ng-cloak>
+-->
+
+
+<section layout="row" flex ng-app="mainApp" ng-controller="ViewCtrl as ctrl">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-xs')" style="background:#314046;width:250px;">
+        <md-toolbar layout="column" layout-align="center center" style="height:200px;background:#314046">
+            <h1 style="margin:0px">App Market</h1>
+        </md-toolbar>
+
+        <md-list>
+            <md-list-item id="main" class="list-item-color" style="background:#00acc4" ng-click="change_ref('launcher.marketplace.home','main')">
+
+                <ng-md-icon icon="store" style="margin-top: 18px;margin-right: 18px;" size="24px"></ng-md-icon>
+                <p class="list-item-margin">Market</p>
+            </md-list-item>
+
+            <v-accordion id="cateogories" class="vAccordion--default" control="accordionA" onexpand="expandCallback(index, id)" oncollapse="collapseCallback(index, id)" style="padding-left:18px;padding-right:18px;" hide-xl hide-gt-lg hide-lg hide-gt-md hide-md hide-gt-sm>
+                <v-pane id="cat" expanded="$first">
+                    <v-pane-header id="Store-header" aria-controls="Store-content">
+                        <p class="list-item-margin" style="color:white">Cateogories</p>
+                    </v-pane-header>
+
+                    <v-pane-content id="Store-content" aria-labelledby="Store-header">
+                        <md-list ng-cloak>
+                            <md-list-item class="list-item-color" ng-repeat="item in cateogiresMobile" style="padding:0" ng-click="openCategory(item)">
+                                <ng-md-icon icon="{{::item.imageUrl}}" style="fill:white;" size="24px"></ng-md-icon>
+                                <div class="md-list-item-text" layout="column" style="margin-left: 5px;">
+                                    <div layout="row" layout-align="start start">
+                                        <p class="list-item-margin" style="padding-left: 14px;">{{::item.name}}</p>
+                                    </div>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+            <md-list-item id="myapps" class="list-item-color" ng-click="change_ref('myapps.display','myapps')">
+                <ng-md-icon icon="apps" style="margin-top: 18px;margin-right: 18px;" size="24px"></ng-md-icon>
+                <p class="list-item-margin">My Apps</p>
+            </md-list-item>
+
+        </md-list>
+
+    </md-sidenav>
+    <md-content flex style="background:transparent;padding:0">
+
+
+        <div ui-view>
+            <md-whiteframe id="market_header" class="md-whiteframe-2dp" layout="column" style="background:white;margin:0 auto;position:fixed;z-index:5;">
+
+                <div layout="row" layout-align="space-between start">
+                    <ul class="nav" hide-xs>
+                        <li class="drop" style="z-index:3">CATEGORIES <img src="img/down.png" />
+                            <ul style="background:white;padding-left: 0;">
+                                <md-content style="opacity:.95;padding:10px">
+                                    <div layout="row" layout-align="start start" ng-repeat="rows in categories">
+                                        <div layout="column" layout-align="center center" class="icons-menu-items" ng-repeat="item in rows" ng-click="openCategory(item)">
+                                            <ng-md-icon icon="{{::item.imageUrl}}" style="fill:#448AFF;" size="48px"></ng-md-icon>
+                                            <center style="font-weight:300">{{::item.name}}</center>
+                                        </div>
+                                    </div>
+                                </md-content>
+                            </ul>
+                        </li>
+                        <li ng-click="change_ref('market.home','main')"><a>HOME</a></li>
+                        <li ng-click="goTotopRated()">TOP RATED</li>
+                        <!--li ng-click="goTonewReleases()">NEW RELEASES</li-->
+
+                    </ul>
+                    <md-button class="md-icon-button" ng-click="toggleLeft()" aria-label="Close" style="margin-right: 15px !important" hide-xl hide-gt-lg hide-lg hide-gt-md hide-md hide-gt-sm>
+                        <ng-md-icon icon="menu" style="fill:grey;" size="32px"></ng-md-icon>
+                    </md-button>
+                    <div layout="row">
+                        <md-button class="md-icon-button" ng-click="openSearchContainer($event)" aria-label="Close" style="margin-right: 15px !important">
+                            <ng-md-icon icon="search" style="fill:grey;" size="32px"></ng-md-icon>
+                        </md-button>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="start start">
+                    <md-content class="tab_content" style="background-color:transparent; border-top: 0;width:400px; padding-left: 40px;">
+                        <md-tabs id="selectedTabs" md-stretch-tabs md-selected="selectedIndex" ng-click="changeTab(selectedIndex)">
+                            <md-tab label="All"></md-tab>
+                            <md-tab label="Paid"></md-tab>
+                            <md-tab label="Free"></md-tab>
+                        </md-tabs>
+                    </md-content>
+                </div>
+
+            </md-whiteframe>
+
+
+            <div ui-view></div>
+        </div>
+
+
+    </md-content>
+    <div style="position: fixed;bottom: 50%;right: 50%;z-index:2000;margin:-68px;" ng-show="showGlobalProgress">
+        <md-progress-circular md-mode="indeterminate" md-diameter="150"></md-progress-circular>
+    </div>
+</section>
+
+<!--
+	<script src="js/jquery-2.1.4.min.js"></script>
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<script src="/bower_components/angular-aria/angular-aria.js"></script>
+	<script src="/bower_components/angular-material/angular-material.js"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="js/angular-material-icons.js"></script> 
+-->
+<!--
+    <script data-require="angular-filter@*" data-semver="0.5.2" src="core_apps/appmarket/js/angular-filter.js"></script>
+    <script src="core_apps/appmarket/js/v-accordion.min.js"></script>
+-->
+<!--
+<script src="/uimicrokernel/uimicrokernel.js"></script>
+<script src="js/cloudcharge.js"></script>
+-->
+
+<!--
+   <script src="core_apps/appmarket/js/directivelibrary.js"></script>
+<script src="core_apps/appmarket/js/controllers/viewCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/config.js"></script>
+<script src="core_apps/appmarket/js/controllers/viewProductCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/rateCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/myAppsCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/addCardCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/myCardsCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/searchCtrl.js"></script>
+<script src="core_apps/appmarket/js/controllers/successPageCtrl.js"></script>
+
+
+<script src="core_apps/appmarket/js/jquery.bxslider.min.js"></script>-->
+
+
+<!--
+</body>
+
+</html>
+-->

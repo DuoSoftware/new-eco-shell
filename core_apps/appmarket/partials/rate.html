@@ -1,0 +1,31 @@
+<md-dialog aria-label="rate"  ng-cloak>
+  <form name="editForm" ng-submit="submit()">
+  <md-toolbar class="modal-header" style="background:#00acc4">
+    <div class="md-toolbar-tools">
+      <h2>Rate</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel();" type="button" aria-label="Close">
+        <ng-md-icon icon="close" style="fill:white;" size="24px"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="width:268px;max-height:810px; ">
+    <div class="md-dialog-content">
+		<div star-rating-two rating="ratingObject.stars" colour="white" style="margin-top: -3px;"
+			read-only="false" max-rating="5" click="rateApp(param,selectedProduct,$event)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)">
+		</div>
+		 <md-input-container class="md-block" flex-gt-sm>
+            <label>Title</label>
+            <input ng-model="ratingObject.title">
+          </md-input-container>
+		  <textarea ng-model="ratingObject.description" placeholder="What are your thoughts?" type="text" style="border:1px solid #CDCDCD;border-radius:3px; height:200px;width:100%;outline: 0;resize: none;padding:15px;box-sizing: border-box;"></textarea>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+   
+    <md-button type="submit" style="margin-right:20px;" >
+      Submit
+    </md-button>
+  </md-dialog-actions>
+  </form>
+</md-dialog>

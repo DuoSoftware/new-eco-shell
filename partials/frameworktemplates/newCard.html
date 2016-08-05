@@ -1,0 +1,180 @@
+<style>
+    .example-animate-container {
+        background: #ececec;
+        list-style: none;
+        margin: 0;
+        padding: 0 10px;
+    }
+    
+    .animate-repeat {
+        line-height: 40px;
+        list-style: none;
+        /*box-sizing:border-box;*/
+        border-bottom: 1px solid white;
+        -webkit-transition: 1s linear all;
+        transition: 1s linear all;
+    }
+    
+    .animate-repeat.ng-move,
+    .animate-repeat.ng-enter,
+    .animate-repeat.ng-leave {
+        -webkit-transition: all linear 0.5s;
+        transition: all linear 0.5s;
+    }
+    
+    .animate-repeat.ng-leave.ng-leave-active,
+    .animate-repeat.ng-move,
+    .animate-repeat.ng-enter {
+        opacity: 0;
+        max-height: 0;
+    }
+    
+    .animate-repeat.ng-leave,
+    .animate-repeat.ng-move.ng-move-active,
+    .animate-repeat.ng-enter.ng-enter-active {
+        opacity: 1;
+        max-height: 40px;
+    }
+    /**
+ * Stagger Leave (hide) animation
+ */
+    
+    .animate-repeat.ng-leave-stagger {
+        /* this will have a 100ms delay between each successive leave animation */
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+        /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+        -webkit-transition-duration: 0s;
+        transition-duration: 0s;
+    }
+    /**
+ * Stagger ENTER ANIMATION
+ */
+    
+    .animate-repeat.ng-enter-stagger {
+        /* this will have a 100ms delay between each successive enter animation */
+        -webkit-transition-delay: 0.2s;
+        transition-delay: 0.2s;
+        /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+        -webkit-transition-duration: 0s;
+        transition-duration: 0s;
+    }
+
+</style>
+
+<md-dialog aria-label="new card" style="width:100%;max-width:500px;max-height:100vh;" ng-cloak>
+
+    <form name="editForm" ng-submit="submit()">
+
+        <md-content layout-padding layout="column" layout-align="start center" md-theme="{{$root.shellConfig.themeconfiguration.palettename}}-{{$root.shellConfig.themeconfiguration.theme}}" md-theme-watch="true">
+            <div class="credit-card-box" ng-repeat="type in cardTypes  | filterByPattern: card.CardNo | limitTo:1">
+                <div class="flip">
+                    <div class="front {{type.type}}">
+                        <div class="chip"> </div>
+                        <div class="logo">
+                            <img ng-repeat="type in cardTypes  | filterByPattern: card.CardNo" ng-src="{{type.imageUrl}}" />
+                            <div ng-show="!(cardTypes | filterByPattern:card.CardNo).length">Invalid card number</div>
+                        </div>
+                        <div class="number">{{card.CardNo}}</div>
+                        <div class="card-holder">
+                            <label> Card holder </label>
+                            <div>{{card.Name}} </div>
+                        </div>
+                        <div class="card-expiration-date">
+                            <label> Expires </label>
+                            <div>{{card.ExpiryMonth}}/{{card.ExpiryYear}} </div>
+                        </div>
+                    </div>
+                    <div class="back {{type.type}}">
+                        <div class="strip"> </div>
+                        <div class="logo" layout="row">
+                            <img ng-src="{{type.imageUrl}}" />
+                            <div ng-show="!(cardTypes | filterByPattern:card.CardNo).length">Invalid card number</div>
+                        </div>
+                        <div class="ccv">
+                            <label> CCV </label>
+                            <div> {{card.CSV}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p ng-show="!(cardTypes | filterByPattern:card.CardNo).length" style="color:red;font-size:20px;animation: scaleUp 0.3s ease-in;text-align:center;margin:5px;">Invalid card number</p>
+
+            <div layout-gt-sm="row" style="width:100%">
+                <md-input-container class="md-block" flex>
+                    <label>Card Number</label>
+                    <input required name="CardNo" ng-model="card.CardNo" angular-mask="0000-0000-0000-0000">
+                    <!--ng-pattern="cardType.regExPattern"  minlength="15" md-maxlength="16"-->
+                    <div class="hint">xxxx-xxxx-xxxx-xxxx</div>
+                    <div ng-messages="editForm.CardNo.$error">
+                        <div ng-message-exp="['required']">Card No. is required</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row" style="width:100%">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Name On Card</label>
+                    <input required name="Name" ng-model="card.Name">
+                    <div ng-messages="editForm.Name.$error">
+                        <div ng-message="required">Name is required.</div>
+                    </div>
+                </md-input-container>
+
+            </div>
+            <!--div layout-gt-sm="row">
+			<md-button ng-click="checkThis()">Check this</md-button>
+		</div-->
+            <div layout-gt-sm="row" layout-align-gt-sm="center center" style="width:100%">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>CVV</label>
+                    <input required name="CSV" ng-model="card.CSV" minlength="3" md-maxlength="4" maxlength="4">
+                    <div ng-messages="editForm.CSV.$error">
+                        <div ng-message-exp="['required']">CVV No. is required</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">Invalid CVV number</div>
+                    </div>
+                </md-input-container>
+                <div flex>
+                    <!--                    <fieldset class="standard" style="padding-bottom:0;padding-right:0;border:1px solid #E1E1E1">-->
+                    <!--                    <legend style="color: #757575;font-size: 12px">Expiry Date *</legend>-->
+                    <div layout="row" layout-align="center center">
+                        <md-input-container flex style="padding-bottom:1px;">
+                            <label>Expiry Year</label>
+                            <md-select ng-model="card.ExpiryYear" ng-change="yearChanged(card.ExpiryYear)" flex>
+                                <md-option ng-repeat="year in years" value="{{year}}">{{year}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex style="padding-bottom:1px;">
+                            <label>Month</label>
+                            <md-select ng-model="card.ExpiryMonth" ng-disabled="card.ExpiryYear.length != 4">
+                                <md-option ng-repeat="month in months" value="{{month}}">{{month}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <!--                    </fieldset>-->
+                </div>
+
+            </div>
+
+
+            <div layout="row" layout-align="space-between center" style=";width:100%;" layout-padding>
+                <div style="font-size: 12px;">Powered by Cloud Charge</div>
+                <div layout="row" layout-align="end center">
+                    <md-button type="button" ng-click="cancel()">
+                        cancel
+                    </md-button>
+
+                    <md-button type="submit" class="md-primary" ng-disabled="disableaddBtn">
+                        <span ng-show="newCard">Add Card</span><span ng-hide="newCard">Save Card Changes</span>
+                    </md-button>
+                </div>
+            </div>
+        </md-content>
+
+
+    </form>
+</md-dialog>

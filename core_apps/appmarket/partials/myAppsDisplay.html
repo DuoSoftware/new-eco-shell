@@ -1,0 +1,47 @@
+<div style="width:100%;padding-bottom:60px;padding-top:60px;">
+<center id="inline" style="background;max-width:960px;margin:0 auto">
+	
+
+			<li ng-repeat="product in allApps | filter:{Paid:paidOrFree||undefined} | filter:searchText||undefined" class="my-animation"> 
+			<md-card style="width:200px;" id="cardApp" class="tint showbox scale" ng-click="viewMyApp(product)" hide-sm hide-xs>
+				<img src="{{product.iconUrl}}" err-src="img/standard.png" style="min-width:128px;height:144px; width: 144px;margin: 0 auto;"  alt="Washed Out"/>
+				<md-divider></md-divider>
+				<md-card-content style="padding: 6px !important;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABGCAMAAAC+PCsEAAAAz1BMVEUtP1H///8ArMQPh50mUGIpRlksQFL6/v6v5e0etssGrsYCp78EoLcVeI0baX0hW24rQ1b9/v/s+fvj9vnJ7fO/6vCI2ORey9pEwtQMsMcAq8MBqcEDpLwMj6UTfpQXc4gZboIfX3MnTF7x+/zb9PfW8vah4emT3OZ81eF41OBu0N5pz91UyNhPxtc6v9I1vtEVs8kSssgGnbQHmrEJlq0KlKsLkagRg5kdZHkjVmn1/P30+/zO7/S36O6k4eqZ3ueX3edkzdssus4qus4ouc0LxBxtAAABoUlEQVRo3tXaR1YCURRFUd4vCkqQElFAcjJiQInmPP8x2fLVbbtscN4Mduuus/7PbcX1wu992B8vtw03bjukjoYM3LFjaMjcIedoyF7wO0ZDNu64MTKkWnbIGxqSuqM0QUPWDrkyMiQf/BI0pOKO2yIZUth1yNTIEBmRZzQkcsenkSFxNiINNCQNfgdoyModR0aGyIi8oiHZiLQeyRAZkaaRIaPgV0dDoqxx98mQuCONS4YMpXHRkKU0LhkiI/KOhvSzxq2RIYWuNC4ZIiOSoCGRNC4ZIiMyNTJERuQQDVm448vIkIfg10BD+tK4ZEi1K41LhtwHv1M0pJc17hMZMm5L45IhA2lcNGQhjUuGyIhcGBkiI3JChsiIzIwMkRE5Q0N60rhkiIzItZEhMiIJGjJ3x12RDJHnz0sjQzbSuGSI/KH5NjIklcZFQ9bSuGRIPkjjkiEVaVwyRJ4/WxMyREakaWRIlEFeyJC4LI1LhqTauGTIShqXDJERmRkZUpHGJUNkREo1MmQUpHHJEBmRhAyJO9K4ZMhQG5cMWWrj/vf9AK2rKmkoiQdhAAAAAElFTkSuQmCC') no-repeat right top">
+
+					<div class="md-actions" layout="row" layout-align="space-between start" style="margin:0">
+					<h2 class="md-title" style="margin:0;margin-top:3px;font-size:16px;color:white">{{product.Name}}</h2>
+					<div style="padding-left:22px;"><div style="background:#00acc4;font-size: 14px;border: 1px solid #ececec;padding-left: 5px;padding-right: 5PX;padding-top: 2px;padding-bottom: 2px;margin-right:5px;margin-top:6px;color:white"><span ng-if="product.price == 0">View</span><span ng-if="product.price != 0">View!</span></div></div>
+					</div>
+	
+					
+					<div class="md-actions" layout="row" layout-align="space-between center" style="margin:0">
+					
+				
+					</div>
+				</md-card-content>
+				
+			</md-card>
+			<md-card style="width:145px;" id="cardApp" class="tint showbox scale" ng-click="viewMyApp(product)" hide-xl hide-gt-lg hide-lg hide-gt-md hide-md hide-gt-sm>
+				<img src="{{product.iconUrl}}" err-src="img/standard.png" style="width:100px;height:100px;margin: 0 auto;"  alt="Washed Out"/>
+				<md-divider></md-divider>
+				<md-card-content style="padding: 6px !important;background:#2d3f51">
+					<div class="md-actions" layout="row" layout-align="space-between start" style="margin:0">
+					<h2 class="md-title" style="margin:0;margin-top:3px;font-size:12px;color:white">{{product.Name}}</h2>
+					<div style="padding-left:22px;"><div style="background:#00acc4;font-size: 14px;border: 1px solid #ececec;padding-left: 5px;padding-right: 5PX;padding-top: 2px;padding-bottom: 2px;margin-right:5px;margin-top:6px;color:white"><span ng-if="product.price == 0">View</span><span ng-if="product.price != 0">View!</span></div></div>
+					</div>
+	
+					
+					<div class="md-actions" layout="row" layout-align="space-between center" style="margin:0">
+					
+				
+					</div>
+				</md-card-content>
+				
+			</md-card>
+		</li> 
+
+
+</center>
+</div>
+
+<ng-md-icon icon="person" style="margin-top: 18px;margin-right: 18px;fill:#D1D1D1;bottom:20px;right:20px;height:200px;width:200px;position:fixed;z-index:-1" size="200px"></ng-md-icon>

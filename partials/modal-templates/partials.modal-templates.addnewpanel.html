@@ -1,0 +1,14 @@
+<md-dialog>
+    <md-content layout-padding md-theme="{{vm.shellConfig.themeconfiguration.palettename}}-{{vm.shellConfig.themeconfiguration.theme}}" md-theme-watch="true" layout="column" layout-align="start center">
+        <md-subheader class="md-no-sticky">Add a new collection Panel</md-subheader>
+
+        <md-input-container flex>
+            <label>Title</label>
+            <input ng-model="vm.newPanelTitle">
+        </md-input-container>
+        <div layout="row" layout-align="end center" layout-padding style="width:100%;">
+            <md-button class="md-primary" ng-click="vm.addNewPanel();" aria-label="add">Add</md-button>
+            <md-button ng-click="vm.close();" aria-label="cancel">Cancel</md-button>
+        </div>
+    </md-content>
+</md-dialog>

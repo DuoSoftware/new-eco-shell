@@ -1,0 +1,173 @@
+{
+    "docklayoutconfiguration": {
+        "pannelcollection": [{
+                "shellRelationship": "DuoWorld Alpha Shell v 1.0",
+                "panelDescription": "Framework shell custom panel",
+                "panelTitle": "collection",
+                "pannnelDirectiveContentTemplate": "partials/panel-templates/collections-pannel.html",
+                "panelArrangement": 0,
+                "pannelContentCollectionType": "various-component",
+                "row": 0,
+                "col": 0,
+                "panelType": "Collections",
+                "panelComponents": [{
+                    "comp_Data": {
+                        "AppType": "HTML5SDK",
+                        "AppUri": "//",
+                        "ApplicationID": "APP_SHELL_MY_TENANTS",
+                        "Description": "My Tenants",
+                        "ImageId": "",
+                        "Name": "My Tenants",
+                        "SecretKey": "d6289f39530908ae7d547abcaa757f43",
+                        "col": 0,
+                        "iconUrl": "http://erangagmailcom.space.duoworld.com/devportal/appicons/APP_SHELL_MY_TENANTS.png",
+                        "row": 1
+                    },
+                    "comp_Id": "APP_SHELL_MY_TENANTS",
+                    "comp_Name": "My Tenants",
+                    "comp_Type": "appshortcut",
+                    "comp_extra": {
+                        "col": 1,
+                        "row": 0,
+                        "sizeX": 1,
+                        "sizeY": 1,
+                        "visible": true
+                    }
+                 }, {
+                    "comp_Data": {
+                        "AppType": "HTML5SDK",
+                        "AppUri": "//",
+                        "ApplicationID": "APP_SHELL_MARKETPLACE",
+                        "Description": "App Marketplace",
+                        "ImageId": "",
+                        "Name": "App Marketplace",
+                        "SecretKey": "0a38f0d403c39c2848cb8077404c8ea7",
+                        "col": 0,
+                        "iconUrl": "http://erangagmailcom.space.duoworld.com/devportal/appicons/APP_SHELL_MARKETPLACE.png",
+                        "row": 1
+                    },
+                    "comp_Id": "APP_SHELL_MARKETPLACE",
+                    "comp_Name": "App Marketplace",
+                    "comp_Type": "appshortcut",
+                    "comp_extra": {
+                        "col": 2,
+                        "row": 0,
+                        "sizeX": 1,
+                        "sizeY": 1,
+                        "visible": true
+                    }
+                 }, {
+                    "comp_Data": {
+                        "AppType": "HTML5SDK",
+                        "AppUri": "//",
+                        "ApplicationID": "APP_SHELL_SETTINGS",
+                        "Description": "User Administrator",
+                        "ImageId": "",
+                        "Name": "User Administrator",
+                        "SecretKey": "d6289f39530908ae7d547abcaa757f43",
+                        "col": 0,
+                        "iconUrl": "http://erangagmailcom.space.duoworld.com/devportal/appicons/APP_SHELL_SETTINGS.png",
+                        "row": 1
+                    },
+                    "comp_Id": "APP_SHELL_SETTINGS",
+                    "comp_Name": "User Administrator",
+                    "comp_Type": "appshortcut",
+                    "comp_extra": {
+                        "col": 1,
+                        "row": 1,
+                        "sizeX": 1,
+                        "sizeY": 1,
+                        "visible": true
+                    }
+                 }, {
+                    "comp_Data": {
+                        "ApplicationID": "clockThu Jun 16 2016 17:19:18 GMT+0530 (Sri Lanka Standard Time)",
+                        "Name": "clock",
+                        "color": "lime",
+                        "icon": "ic_watch_24px.svg",
+                        "image": "images/widget/clock.png"
+                    },
+                    "comp_Id": "clockThu Jun 16 2016 17:19:18 GMT+0530 (Sri Lanka Standard Time)",
+                    "comp_Name": "clock",
+                    "comp_Type": "clock",
+                    "comp_extra": {
+                        "col": 9,
+                        "row": 0,
+                        "sizeX": 2,
+                        "sizeY": 2,
+                        "visible": true
+                    }
+                }, {
+                    "comp_Data": {
+                        "ApplicationID": "weather",
+                        "Name": "weather",
+                        "color": "lime",
+                        "icon": "ic_watch_24px.svg",
+                        "image": "images/widget/weather.png"
+                    },
+                    "comp_Id": "weather",
+                    "comp_Name": "weather",
+                    "comp_Type": "weather",
+                    "comp_extra": {
+                        "col": 9,
+                        "row": 2,
+                        "sizeX": 2,
+                        "sizeY": 2,
+                        "visible": true
+                    }
+                }]
+			}, {
+                "shellRelationship": "DuoWorld Alpha Shell v 1.0",
+                "panelDescription": "Framework shell applications panel",
+                "panelTitle": "collections 2",
+                "pannnelDirectiveContentTemplate": "partials/panel-templates/collections-pannel.html",
+                "panelArrangement": 1,
+                "pannelContentCollectionType": "application-component",
+                "row": 0,
+                "col": 1,
+                "panelType": "Collections"
+			}
+		],
+        "dockoptions": {
+            "transitioneffect": "flip",
+            "layoutdirection": "horizontal",
+            "pagination": true,
+            "looppannels": false
+        }
+    },
+    "themeconfiguration": {
+        "theme": "dark",
+        "palettename": "light-blue",
+        "primarypalette": "#03A9F4",
+        "accentpalette": "#FF5252"
+    },
+    "backgroundconfiguration": [
+        {
+            "backgroundtype": "solid",
+            "backgroundtypeactive": false,
+            "backgroundcolor": "#FF4081"
+		}
+        , {
+            "backgroundtype": "gradient",
+            "backgroundtypeactive": false,
+            "backgroundgradientconfig": {
+                "color1": "#FF4081",
+                "color2": "#3F51B5",
+                "orientation": "diagonalup"
+            }
+		}
+        , {
+            "backgroundtype": "image",
+            "backgroundtypeactive": true,
+            "backgroundimageconfig": {
+                "imageurl": "images/shellassets/background/background1.gif",
+                "imageblur": {
+                    "status": true,
+                    "amount": 10
+                },
+                "textureoverlay": false,
+                "vignetteoverlay": false
+            }
+		}
+	]
+}

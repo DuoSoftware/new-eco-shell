@@ -1,0 +1,131 @@
+	<!--CARD CONTAINER START-->
+	<div class="card-container selected_product_card" style="padding-top:120px;padding-bottom:20px;padding-left:10px;padding-right:10px" ng-init="initialize(selectedProduct)">
+		<!--WHITEFRAME START-->
+		<md-whiteframe class="md-whiteframe-4dp" layout layout-align="center center" style="border:1px solid #ccc;width:960px;margin:0 auto"> 
+
+			<!--FORM START-->
+			<form name="editForm" style="width:100%;">
+				<md-content flex style="border: 1px solid #E6E6E6; border-radius: 4px;">
+					
+					<div layout="row" layout-align="space-between center" layout-margin style="background-color:#00acc4;padding: 8px;margin:0px" >
+						<div layout="row" layout-align="start start" style="margin:0px">
+							<img id="userProfilePic" src="{{selectedProduct.iconUrl}}" style=" border-radius: 100px; height:56px;width:56px;">
+							<div layout="column" layout-align="start center" style="margin-left:10px">
+								<h2 style="font-size:25px;font-weight:300;margin:0px;color:white">{{selectedProduct.name}}</h2>
+								<div star-rating rating="selectedProduct.totalVotes / selectedProduct.voteCount | ceil" colour="white" style="margin-top: -3px;"
+									read-only="true" max-rating="5">
+								</div>
+								<span style="font-size:12px;color:rgba(0,0,0,0.54)"></span>
+							</div>
+						</div>
+		
+						<div layout="row" layout-align="end end">
+							<md-button class="md-raised" style="background:rgb(193, 58, 49);font-size:14px;color:white;margin-right:20px !important;" ng-click="uninstall(selectedProduct,$event)">Uninstall</md-button>
+								<md-button type="button" class="md-icon-button" aria-label="back" ng-click="closeMyApp()">
+									<ng-md-icon icon="close" style="fill:white;" size="24px"></ng-md-icon>
+								</md-button>
+							
+						</div>
+					</div>
+					
+
+
+					<md-tabs  id="selectedTabs" md-dynamic-height md-border-bottom>
+						<md-tab label="overview">
+						
+							<div layout-gt-sm="row" style="padding:15px;">
+								
+									<center class="md-block" flex-gt-sm="60" style="height:300px" ng-if="selectedProduct.images.length != 0">
+										<ul class="bxslider" style="height:260px">
+										  <li ng-repeat="image in selectedProduct.images"><img  src="{{image}}" /></li>
+										</ul>
+									</center>	
+					
+									
+								
+								<div layout="column" layout-align="end end" flex style="padding-left: 17px;">
+									<md-card style="background:#607D8B;overflow-y:auto;height:212px;width:100%;z-index:1">	
+										<md-card-content>
+											<br/><p style="color:white;margin-top:8px">{{selectedProduct.description}}</p>
+										</md-card-content>
+									</md-card>
+									<md-card style="background:#607D8B;overflow-y:auto;height:44px;width:100%">	
+										<md-card-content layout="row" layout-align="space-between center">
+											<p style="color:white;margin-top:3px" ng-if="selectedProduct.discount != '0'"></p>
+											<h1 class="md-title" style="margin:0"><span style="color:white">Rs. {{selectedProduct.price}}</span></h1>
+										</md-card-content>
+									</md-card>
+						
+								</div>
+							</div>
+								
+						
+						</md-tab>
+						<md-tab label="reviews">
+						
+							<div layout-gt-sm="row" style="padding:15px;">
+
+								<md-list class="md-block" flex-gt-sm="65" style="border:1px solid #E9E9E9;border-radius:3px;height:290px;overflow-y:scroll">
+								  <md-list-item class="md-3-line" ng-repeat="comment in allRatings" style="margin-left:10px;">
+									<img ng-src="{{comment.imageurl}}" class="md-avatar" />
+									<div class="md-list-item-text" layout="column" style="border-bottom: 1px solid #ececec;">
+									<div layout="row" layout-align="start start"> <p style="font-size:12px"><b>{{comment.name}}</b></p><p ng-if="comment.date" style="margin-left:10px;font-size:12px" hide-xs>(Posted: {{comment.date}})</p></div>
+									<div layout="row" layout-align="start start"><h3 style="font-size:18px">{{comment.title}}</h3><p style="margin-left:10px;" hide-xs>{{comment.stars}} stars</p></div>
+									  
+									  
+									  <p style="margin-top:6px;">{{comment.description}}</p>
+									</div>
+									<md-button class="md-icon-button launch" ng-click="deleteComment($event,comment)" style="margin-top: 10px !important" aria-label="delete" ng-if="myRating.title">
+										<ng-md-icon icon="close" size="18px" style="fill:#6A6A6A"></ng-md-icon>
+									</md-button>
+									
+								  </md-list-item>
+								  <div layout="column" layout-align="center center" ng-if="allRatings.length < 1">
+									  <h1 style="color:#BEBEBE;padding-top:50px">There are no comments!</h1>
+									  <h4 style="color:#BEBEBE;">Be the first to comment...</h4>
+								  </div>
+								</md-list>
+					
+									
+								
+								<div layout="column" layout-align="end end" flex style="padding-left:15px" ng-if="myRating.title">
+									<div layout="row">
+										<span style="padding-bottom: 5px;margin-top: 10px;">Edit Your Rating</span>
+										<md-button class="md-icon-button launch" aria-label="edit" ng-click="editRating(myRating,selectedProduct,$event)">
+											<ng-md-icon icon="mode_edit" style="margin-top: 18px;margin-right: 18px;fill:#B4B4B4" size="20px"></ng-md-icon>
+										</md-button>
+									</div>
+									<div star-rating-two rating="myRating.stars" colour="white" style="margin-top: -3px;margin-bottom:3px"
+										read-only="true" max-rating="5" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)">
+									</div>
+									<md-icon style='color:gold;height:40px;width:40px;outline:0;display:none' md-svg-src='img/directive_library/ic_star_24px.svg'></md-icon>
+									<input ng-model="myRating.title" placeholder="Title" ng-disabled="true" style="border:1px solid #CDCDCD;border-radius:3px;width:100%;outline: 0;resize: none;padding:3px;box-sizing: border-box;"/><br/>
+									<textarea ng-model="myRating.description" placeholder="What are your thoughts?" ng-disabled="true" type="text" style="border:1px solid #CDCDCD;border-radius:3px; height:150px;width:100%;outline: 0;resize: none;padding:15px;box-sizing: border-box;"></textarea>
+								</div>
+								
+								<div layout="column" layout-align="end end" flex style="padding-left:15px" ng-if="!myRating.title">
+									<div layout="row">
+										<span style="padding-bottom: 5px;margin-top: 10px;">Add a review</span>
+										<md-button class="md-icon-button launch" aria-label="edit" ng-click="editRating(myRating,selectedProduct,$event)">
+											<ng-md-icon icon="mode_edit" style="margin-top: 18px;margin-right: 18px;fill:#B4B4B4" size="20px"></ng-md-icon>
+										</md-button>
+									</div>
+									<div star-rating-two rating="myRating.stars" colour="white" style="margin-top: -3px;margin-bottom:3px"
+										read-only="false" max-rating="5" click="rateApp(param,selectedProduct,$event)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)">
+									</div>
+									<md-icon style='color:gold;height:40px;width:40px;outline:0;display:none' md-svg-src='img/directive_library/ic_star_24px.svg'></md-icon>
+								</div>
+								
+								
+							</div>
+							
+						</md-tab>
+					</md-tabs>
+
+				</md-content>
+			</form>
+			
+		</md-whiteframe><br><br>
+		<!--WHITEFRAME END-->
+	</div>
+	<!--CARD CONTAINER END-->

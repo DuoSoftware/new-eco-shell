@@ -1,0 +1,68 @@
+<style>
+    .swiper-container {
+        height: 100% !important;
+    }
+    
+    .dockPanels {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+</style>
+<ks-swiper-container override-parameters="{'effect':vm.shellConfig.docklayoutconfiguration.dockoptions.transitioneffect, 'keyboardControl':'true', 'fade':{'crossFade':'true'}}" initial-slide="0" direction="{{vm.shellConfig.docklayoutconfiguration.dockoptions.layoutdirection}}" loop="vm.shellConfig.docklayoutconfiguration.dockoptions.looppannels" pagination-is-active="vm.shellConfig.docklayoutconfiguration.dockoptions.pagination" slides-per-view="" space-between="300" pagination-clickable="true" swiper="vm.swiper" on-ready="vm.onReadySwiper(swiper)">
+    <ks-swiper-slide class="swiper-slide" ng-repeat="panel in vm.shellConfig.docklayoutconfiguration.pannelcollection | orderBy:'panelArrangement'" ng-hide="panel.panelTitle == 'widgets'">
+        <div class="dockPanels">
+            <div class="sliderPanelContainer" ng-include="panel.pannnelDirectiveContentTemplate" ng-class="{panelEditMode : vm.showPanelEditModeFlag}" data-context-menu="partials/context-menu-templates/paneledit.html"></div>
+            <panneltitle-component title="panel.panelTitle"></panneltitle-component>
+
+        </div>
+    </ks-swiper-slide>
+</ks-swiper-container>
+
+<md-button class="md-fab md-mini md-primary editPaneDoneButton" ng-class="{'editPaneDoneButton-visible' : vm.showPanelEditModeFlag}" ng-click="vm.exitPanelEditMode();" aria-label="close tray">
+    <md-icon md-svg-icon="icons/ic_done_24px.svg" style="color:whitesmoke;"></md-icon>
+</md-button>
+<md-content class="appTray" ng-class="{'appTray-visible' : vm.showPanelEditModeFlag}" layout="row" layout-align="start start" layout-wrap>
+    <md-tabs md-dynamic-height md-border-bottom class="customTab">
+        <md-tab label="Applications">
+            <!--                <perfect-scrollbar class="appTrayScroller" wheel-propagation="false" wheel-speed="2" layout="row">-->
+            <md-content class="appTray-content" id="appTray-content" layout="row" layout-wrap>
+                <div flex="90" layout="row" layout-wrap>
+                    <div ng-repeat="componentdata in vm.allApps | filter:globalSearchKeyword" component-generator component="'appshortcut'" componentdata="componentdata" ng-if="componentdata.Apps == undefined" componentdraggable="true" layout="column" layout-align="start center" style="transform:scale(0.7)"> </div>
+                </div>
+                <div class="appTray-nav" layout="column" layout-align="center center">
+                    <md-button ng-click="vm.goToPrevStep()" aria-label="go to previous step">
+                        <md-icon md-svg-icon="icons/ic_keyboard_arrow_up_24px.svg" alt="up" style="color:{{vm.shellConfig.themeconfiguration.accentpalette}}"></md-icon>
+                    </md-button>
+                    <md-button ng-click="vm.goToNextStep()" aria-label="go to next step">
+                        <md-icon md-svg-icon="icons/ic_keyboard_arrow_down_24px.svg" alt="down" style="color:{{vm.shellConfig.themeconfiguration.accentpalette}}"></md-icon>
+                    </md-button>
+                </div>
+            </md-content>
+            <!--                </perfect-scrollbar>-->
+        </md-tab>
+        <md-tab label="Widgets">
+            <!--                <perfect-scrollbar class="appTrayScroller" wheel-propagation="false" wheel-speed="2" layout="row">-->
+            <md-content class="appTray-content" id="appTray-content">
+                <div layout="row" layout-align="start start" layout-wrap layout-padding>
+                    <md-button ng-repeat="componentdata in vm.allWidgets | filter:globalSearchKeyword" component-generator component="componentdata.Name" componentdata="componentdata" componentdraggable="true" style="width:140px;height: 160px;transform:scale(0.7);
+"> </md-button>
+                </div>
+            </md-content>
+            <!--                </perfect-scrollbar>-->
+        </md-tab>
+    </md-tabs>
+</md-content>
+<!--
+<div class="selectedSystemPanel md-framework-pannel-apptray" droppable layout="row" layout-align="center center">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="2">
+        <div gridster="gridsterOpts">
+            <ul>
+                <li gridster-item="widgetItemMap" ng-repeat="componentdata in $root.shellConfig.docklayoutconfiguration.pannelcollection[0].panelComponents | filter:globalSearchKeyword">
+                    <div component-generator component="componentdata.comp_Type" componentdata="componentdata.comp_Data" class="wh-inherit" componentdraggable="false" ng-right-click="removeAppFromPanel(componentdata,$event,$index)"></div>
+                </li>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+</div>-->

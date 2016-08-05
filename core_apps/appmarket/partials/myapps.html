@@ -1,0 +1,33 @@
+<md-whiteframe id="market_header" class="md-whiteframe-2dp" layout="column" style="background:white;margin:0 auto;position:fixed;z-index:5;">
+			
+			<div layout="row" layout-align="space-between start">
+    			<ul class="nav" hide-xs>
+    				  <li class="drop" style="z-index:3">CATEGORIES <img src="img/down.png"/>
+    					<ul style="background:white;padding-left: 0;">
+    				    	<md-content style="opacity:.95;padding:10px">
+    							<div layout="row" layout-align="start start" ng-repeat="rows in categories">
+    								<div layout="column" layout-align="center center" class="icons-menu-items" ng-repeat="item in rows" ng-click="openCategory(item)">
+    									<ng-md-icon icon="{{::item.imageUrl}}" style="fill:#448AFF;" size="48px"></ng-md-icon>
+    									<center style="font-weight:300">{{::item.name}}</center>
+    								</div>
+    							</div>
+    						</md-content>
+    					</ul>
+    				  </li>
+    				  <li ng-click="change_ref('market.home','main')"><a>HOME</a></li>
+    				  
+    			</ul>
+    			<md-button class="md-icon-button" ng-click="toggleLeft()" aria-label="Close" style="margin-right: 15px !important" hide-xl hide-gt-lg hide-lg hide-gt-md hide-md hide-gt-sm>
+        			<ng-md-icon icon="menu" style="fill:grey;" size="32px"></ng-md-icon>
+        		 </md-button>
+    			 <div layout="row">
+    			     <md-button class="md-icon-button" ng-click="openSearchContainer($event)" aria-label="Close" style="margin-right: 15px !important">
+            			<ng-md-icon icon="search" style="fill:grey;" size="32px"></ng-md-icon>
+            		  </md-button>
+    			  </div>
+			</div>
+
+
+</md-whiteframe> 
+
+<div ui-view></div>

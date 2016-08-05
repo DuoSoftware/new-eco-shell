@@ -1,0 +1,117 @@
+[
+  {
+    "name": "Books & Reference",
+    "description": "1",
+	"imageUrl": "book"
+  },
+  {
+    "name": "Business",
+    "description": "1",
+	"imageUrl": "business"
+  },
+  {
+    "name": "Comics",
+    "description": "1",
+	"imageUrl": "mood"
+  },
+  {
+    "name": "Communication",
+    "description": "1",
+	"imageUrl": "forum"
+  },
+  {
+    "name": "Education",
+    "description": "1",
+	"imageUrl": "language"
+  },
+  {
+    "name": "Entertainment",
+    "description": "1",
+	"imageUrl": "face"
+  },
+  {
+    "name": "Finance",
+    "description": "1",
+	"imageUrl": "attach_money"
+  },
+  {
+    "name": "Health & Fitness",
+    "description": "1",
+	"imageUrl": "directions_bike"
+  },
+  {
+    "name": "Libraries & Demo",
+    "description": "1",
+	"imageUrl": "local_library"
+  },
+  {
+    "name": "Lifestyle",
+    "description": "1",
+	"imageUrl": "local_restaurant"
+  },
+  {
+    "name": "Live Wallpaper",
+    "description": "1",
+	"imageUrl": "satellite"
+  },
+  {
+    "name": "Media & Video",
+    "description": "1",
+	"imageUrl": "my_library_music"
+  },
+  {
+    "name": "News & Magazines",
+    "description": "1",
+	"imageUrl": "image"
+  },
+  {
+    "name": "Personalization",
+    "description": "1",
+	"imageUrl": "person"
+  },
+  {
+    "name": "Photography",
+    "description": "1",
+	"imageUrl": "camera_alt"
+  },
+  {
+    "name": "Productivity",
+    "description": "1",
+	"imageUrl": "event_available"
+  },
+  {
+    "name": "Shopping",
+    "description": "1",
+	"imageUrl": "add_shopping_cart"
+  },
+  {
+    "name": "Social",
+    "description": "1",
+	"imageUrl": "share"
+  },
+  {
+    "name": "Sports",
+    "description": "1",
+	"imageUrl": "directions_walk"
+  },
+  {
+    "name": "Transportation",
+    "description": "1",
+	"imageUrl": "directions_bus"
+  },
+  {
+    "name": "Travel & Local",
+    "description": "1",
+	"imageUrl": "local_airport"
+  },
+  {
+    "name": "Weather",
+    "description": "1",
+	"imageUrl": "wb_sunny"
+  },
+  {
+    "name": "Widgets",
+    "description": "1",
+	"imageUrl": "now_widgets"
+  }
+]

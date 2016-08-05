@@ -1,0 +1,22 @@
+<md-content layout="column" layout-align="start start" class="application-dialog-panel">
+    <div layout="row" layout-align="space-between center" style="width:100%;" layout-padding>
+        <span style="margin: 0px 16px;
+    font-size: 25px;
+    font-weight: 300;">All Applications</span>
+        <div class="tool-bar-search" layout="row" layout-align="center center" flex>
+
+            <input ng-model="globalSearchKeyword" placeholder="Search">
+        </div>
+        <md-button aria-label="see all" class="md-primary">
+            Instal from MarketPlace</md-button>
+    </div>
+    <md-content layout="column" layout-align="start center" layout-padding>
+        <perfect-scrollbar class="systemTrayScroller" id="systemTrayScroller" wheel-propagation="false" wheel-speed="2" suppressScrollX="true" layout="row" layout-align="center start">
+            <div layout="row" layout-align="center start" layout-wrap>
+                <div ng-repeat="componentdata in applications.allApps | filter:globalSearchKeyword" component-generator component="'appshortcut'" componentdata="componentdata" ng-if="componentdata.Apps == undefined" componentdraggable="false" style="width:100px" layout-margin> </div>
+                <div ng-repeat="componentdata in applications.allApps | filter:globalSearchKeyword" component-generator component="'appbundle'" componentdata="componentdata" ng-if="componentdata.Apps !== undefined" componentdraggable="false" style="width:100px" layout-margin> </div>
+            </div>
+        </perfect-scrollbar>
+        <p ng-if="">No Results Found!</p>
+    </md-content>
+</md-content>

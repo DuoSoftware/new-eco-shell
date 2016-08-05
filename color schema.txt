@@ -1,0 +1,10 @@
+themes available 
+    1.light
+    2.dark
+primary colors available - all material colors
+dock color - light or dark
+settings - blue grey,amber
+market place - light blue
+my tenants - lime
+user admin - purple
+profile - amber

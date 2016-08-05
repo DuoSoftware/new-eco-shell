@@ -1,0 +1,67 @@
+<div style="padding-top:120px;width:100%;padding-bottom:60px;">
+    <center id="inline" style="background;max-width:960px;margin:0 auto">
+    	
+    
+    	<li ng-repeat="product in allApps | filter:{Paid:paidOrFree||undefined} | filter:searchText||undefined" class="my-animation"> 
+    	
+			<md-card style="width:200px;" id="cardApp" class="tint showbox scale" ng-click="viewProduct(product)" hide-sm hide-xs>
+				<img src="/apis/marketplace/getIcon/{{product.appKey}}" err-src="img/standard.png" style="min-width:128px;height:144px; width: 144px;margin: 0 auto;"  alt="Washed Out"/>
+				<md-divider></md-divider>
+				<md-card-content style="padding:0px;padding-left:5px !important;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABGCAMAAAC+PCsEAAAAz1BMVEUtP1H///8ArMQPh50mUGIpRlksQFL6/v6v5e0etssGrsYCp78EoLcVeI0baX0hW24rQ1b9/v/s+fvj9vnJ7fO/6vCI2ORey9pEwtQMsMcAq8MBqcEDpLwMj6UTfpQXc4gZboIfX3MnTF7x+/zb9PfW8vah4emT3OZ81eF41OBu0N5pz91UyNhPxtc6v9I1vtEVs8kSssgGnbQHmrEJlq0KlKsLkagRg5kdZHkjVmn1/P30+/zO7/S36O6k4eqZ3ueX3edkzdssus4qus4ouc0LxBxtAAABoUlEQVRo3tXaR1YCURRFUd4vCkqQElFAcjJiQInmPP8x2fLVbbtscN4Mduuus/7PbcX1wu992B8vtw03bjukjoYM3LFjaMjcIedoyF7wO0ZDNu64MTKkWnbIGxqSuqM0QUPWDrkyMiQf/BI0pOKO2yIZUth1yNTIEBmRZzQkcsenkSFxNiINNCQNfgdoyModR0aGyIi8oiHZiLQeyRAZkaaRIaPgV0dDoqxx98mQuCONS4YMpXHRkKU0LhkiI/KOhvSzxq2RIYWuNC4ZIiOSoCGRNC4ZIiMyNTJERuQQDVm448vIkIfg10BD+tK4ZEi1K41LhtwHv1M0pJc17hMZMm5L45IhA2lcNGQhjUuGyIhcGBkiI3JChsiIzIwMkRE5Q0N60rhkiIzItZEhMiIJGjJ3x12RDJHnz0sjQzbSuGSI/KH5NjIklcZFQ9bSuGRIPkjjkiEVaVwyRJ4/WxMyREakaWRIlEFeyJC4LI1LhqTauGTIShqXDJERmRkZUpHGJUNkREo1MmQUpHHJEBmRhAyJO9K4ZMhQG5cMWWrj/vf9AK2rKmkoiQdhAAAAAElFTkSuQmCC') no-repeat right top">
+					<!--div ng-if="product.name.length <= 16" style="position:absolute;height:55px;width:10px;background:#00acc4;-ms-transform: skewX(-20deg);-webkit-transform: skewX(-20deg); transform: skewX(-20deg);left: 120px;"></div>
+					<div ng-if="product.name.length > 16" style="position:absolute;height:67px;width:10px;background:#00acc4;-ms-transform: skewX(-20deg);-webkit-transform: skewX(-20deg); transform: skewX(-20deg);left: 120px;"></div-->
+					<div class="md-actions" layout="row" layout-align="space-between start" style="margin:0">
+					<h2 class="md-title" style="margin:0;margin-top:3px;font-size:16px;color:white; text-align: left;">{{product.name}}</h2>
+					<div style="padding-left:22px;"><div style="background:#00acc4;font-size: 14px;border: 1px solid #ececec;padding-left: 5px;padding-right: 5PX;padding-top: 2px;padding-bottom: 2px;margin-right:5px;margin-top:6px;color:white"><span ng-if="product.price == 0">Get!</span><span ng-if="product.price != 0">Buy!</span></div></div>
+					</div>
+	
+					
+					<div class="md-actions" layout="row" layout-align="space-between center" style="margin:0">
+					
+					<div star-rating rating="product.rating" colour="white" style="margin-top: -3px;"
+						read-only="true" max-rating="5">
+					</div>
+					<text style="color:black;font-weight:700;font-size:15px;margin-top: 8px;margin-right:5px;">
+						<div ng-if="product.price > 0">$ {{product.price}}</div>
+						<div ng-if="product.price == 0 || isNumber(product.price) == false">Free</div>
+					</text>
+					</div>
+				</md-card-content>
+				
+			</md-card>
+			
+			<md-card style="width:145px;" id="cardApp" class="tint showbox scale" ng-click="viewProduct(product)" hide-xl hide-gt-lg hide-lg hide-gt-md hide-md hide-gt-sm>
+				<img src="/apis/marketplace/getIcon/{{product.appKey}}" err-src="img/standard.png" style="width:100px;height:100px;margin: 0 auto;"  alt="Washed Out"/>
+				<md-divider></md-divider>
+				<md-card-content style="padding:0px;padding-left:5px !important;background:#2d3f51;">
+
+					<div class="md-actions" layout="row" layout-align="space-between start" style="margin:0">
+					<h2 class="md-title" style="margin:0;margin-top:5px;font-size:12px;color:white; text-align: left;">{{product.name}}</h2>
+					<div style="padding-left:22px;"><div style="background:#00acc4;font-size: 12px;border: 1px solid #ececec;padding-left: 5px;padding-right: 5PX;padding-top: 2px;padding-bottom: 2px;margin-right:5px;margin-top:6px;color:white"><span ng-if="product.price == 0">Get!</span><span ng-if="product.price != 0">Buy!</span></div></div>
+					</div>
+	
+					
+					<div class="md-actions" layout="row" layout-align="end center" style="margin:0;padding-bottom: 4px">
+					<text style="color:white;font-weight:700;font-size:12px;margin-top: 8px;margin-right:5px;">
+						<div ng-if="product.price != 0"><span ng-if="product.price!='Free'">Rs. </span>{{product.price}}</div>
+						<div ng-if="product.price == 0">Free</div>
+					</text>
+					</div>
+				</md-card-content>
+				
+			</md-card>
+		</li> 
+    		
+    
+    
+    </center>
+    <div layout="row" layout-sm="column" layout-align="space-around" style="padding-top:25%;" ng-show="showProgress==true;">
+        <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+     </div>
+     <div layout="row" layout-align="center center" ng-if="allApps.length == 0">
+        <h2>This Page is empty</h2>
+    </div>
+</div>
+
+
+<ng-md-icon icon="home" style="margin-top: 18px;margin-right: 18px;fill:#D1D1D1;bottom:20px;right:20px;height:200px;width:200px;position:fixed;z-index:-1" size="200px"></ng-md-icon>

@@ -1,0 +1,136 @@
+.red-dark .profile-widget-overlay,
+.pink-dark .profile-widget-overlay,
+.purple-dark .profile-widget-overlay,
+.deep-purple-dark .profile-widget-overlay,
+.indigo-dark .profile-widget-overlay,
+.blue-dark .profile-widget-overlay,
+.light-blue-dark .profile-widget-overlay,
+.cyan-dark .profile-widget-overlay,
+.teal-dark .profile-widget-overlay,
+.green-dark .profile-widget-overlay,
+.light-green-dark .profile-widget-overlay,
+.lime-dark .profile-widget-overlay,
+.yellow-dark .profile-widget-overlay,
+.amber-dark .profile-widget-overlay,
+.orange-dark .profile-widget-overlay,
+.deep-orange-dark .profile-widget-overlay,
+.brown-dark .profile-widget-overlay,
+.grey-dark .profile-widget-overlay,
+.blue-grey-dark .profile-widget-overlay {
+    background: linear-gradient(rgba(255, 0, 0, 0), #424242);
+}
+.red-dark .profile-widget-info,
+.pink-dark .profile-widget-info,
+.purple-dark .profile-widget-info,
+.deep-purple-dark .profile-widget-info,
+.indigo-dark .profile-widget-info,
+.blue-dark .profile-widget-info,
+.light-blue-dark .profile-widget-info,
+.cyan-dark .profile-widget-info,
+.teal-dark .profile-widget-info,
+.green-dark .profile-widget-info,
+.light-green-dark .profile-widget-info,
+.lime-dark .profile-widget-info,
+.yellow-dark .profile-widget-info,
+.amber-dark .profile-widget-info,
+.orange-dark .profile-widget-info,
+.deep-orange-dark .profile-widget-info,
+.brown-dark .profile-widget-info,
+.grey-dark .profile-widget-info,
+.blue-grey-dark .profile-widget-info {
+    background: linear-gradient(rgba(255, 0, 0, 0), #424242)
+}
+.red-dark .appshortcut-opener,
+.pink-dark .appshortcut-opener,
+.purple-dark .appshortcut-opener,
+.deep-purple-dark .appshortcut-opener,
+.indigo-dark .appshortcut-opener,
+.blue-dark .appshortcut-opener,
+.light-blue-dark .appshortcut-opener,
+.cyan-dark .appshortcut-opener,
+.teal-dark .appshortcut-opener,
+.green-dark .appshortcut-opener,
+.light-green-dark .appshortcut-opener,
+.lime-dark .appshortcut-opener,
+.yellow-dark .appshortcut-opener,
+.amber-dark .appshortcut-opener,
+.orange-dark .appshortcut-opener,
+.deep-orange-dark .appshortcut-opener,
+.brown-dark .appshortcut-opener,
+.grey-dark .appshortcut-opener,
+.blue-grey-dark .appshortcut-opener {
+    background: rgb(66, 66, 66);
+}
+
+/*
+.red-dark,
+.pink-dark,
+.purple-dark,
+.deep-purple-dark,
+.indigo-dark,
+.blue-dark,
+.light-blue-dark,
+.cyan-dark,
+.teal-dark,
+.green-dark,
+.light-green-dark,
+.lime-dark,
+.yellow-dark,
+.amber-dark,
+.orange-dark,
+.deep-orange-dark,
+.brown-dark,
+.grey-dark,
+.blue-grey-dark .profile-widget-overlay {
+    background: linear-gradient(rgba(255, 0, 0, 0), #424242);
+}
+*/
+
+.red-dark .dock-toolbar-overlay,
+.pink-dark .dock-toolbar-overlay,
+.purple-dark .dock-toolbar-overlay,
+.deep-purple-dark .dock-toolbar-overlay,
+.indigo-dark .dock-toolbar-overlay,
+.blue-dark .dock-toolbar-overlay,
+.light-blue-dark .dock-toolbar-overlay,
+.cyan-dark .dock-toolbar-overlay,
+.teal-dark .dock-toolbar-overlay,
+.green-dark .dock-toolbar-overlay,
+.light-green-dark .dock-toolbar-overlay,
+.lime-dark .dock-toolbar-overlay,
+.yellow-dark .dock-toolbar-overlay,
+.amber-dark .dock-toolbar-overlay,
+.orange-dark .dock-toolbar-overlay,
+.deep-orange-dark .dock-toolbar-overlay,
+.brown-dark .dock-toolbar-overlay,
+.grey-dark .dock-toolbar-overlay,
+.blue-grey-dark .dock-toolbar-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.red-dark .profile-widget span,
+.pink-dark .profile-widget span,
+.purple-dark .profile-widget span,
+.deep-purple-dark .profile-widget span,
+.indigo-dark .profile-widget span,
+.blue-dark .profile-widget span,
+.light-blue-dark .profile-widget span,
+.cyan-dark .profile-widget span,
+.teal-dark .profile-widget span,
+.green-dark .profile-widget span,
+.light-green-dark .profile-widget span,
+.lime-dark .profile-widget span,
+.yellow-dark .profile-widget span,
+.amber-dark .profile-widget span,
+.orange-dark .profile-widget span,
+.deep-orange-dark .profile-widget span,
+.brown-dark .profile-widget span,
+.grey-dark .profile-widget span,
+.blue-grey-dark .profile-widget span {
+    color: rgba(255, 255, 255, 0.6);
+}
+.dark .profile-widget-info span {
+    color: rgba(255, 255, 255, 0.8);
+}
+.dark .dock-toolbar p {
+    color: rgba(255, 255, 255, 0.8);
+}

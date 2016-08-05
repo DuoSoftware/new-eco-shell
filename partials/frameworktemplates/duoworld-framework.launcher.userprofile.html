@@ -1,0 +1,309 @@
+<style>
+    #divA {
+        cursor: pointer;
+    }
+    
+    #divB {
+        display: none;
+        cursor: pointer;
+    }
+    
+    #divA:hover {
+        opacity: 0.7;
+    }
+    
+    #divA:hover + #divB {
+        display: block;
+    }
+    
+    .md-input[disabled] {
+        color: white !important;
+    }
+    
+    @-webkit-keyframes scaleAnimation {
+        from {
+            -webkit-transform: scale(.1)
+        }
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+    
+    @-moz-keyframes scaleAnimation {
+        from {
+            -moz-transform: scale(.1)
+        }
+        to {
+            -moz-transform: scale(1)
+        }
+    }
+    
+    @-o-keyframes scaleAnimation {
+        from {
+            -o-transform: scale(.1) translate(0)
+        }
+        to {
+            -o-transform: scale(1)
+        }
+    }
+    
+    #cancelbtn {
+        -webkit-animation: scaleAnimation .5s 1 ease;
+        -moz-animation: scaleAnimation .5s 1 ease;
+        -o-animation: scaleAnimation .5s 1 ease
+    }
+    
+    .highlight_card {
+        background: #555555;
+    }
+
+</style>
+<!-- custom app template -->
+<coreapp-container routedappname="'UserProfile'" accentpalette="profile.shellConfig.themeconfiguration.primarypalette">
+    <frameworkapp-container routedappname="'User Profile'" routedappimguri="$root.profilePicture" accentpalette="colors.myDominantColor">
+        <div style="width:100%;" layout="column" layout-align="start center" ng-controller="duoworld-framework-shell-launcher-userprofile-ctrl">
+            <div class="card-container" style="width:100%;" layout="column" layout-align="start center">
+                <!--WHITEFRAME START-->
+                <div layout-gt-sm="row" layout-align-gt-sm="start end" class="profile-content-flat" layout="column" layout-align="start center">
+                    <div layout="column" layout-align="center center" class="profile-banner-image">
+                        <img id="divA" ng-src="{{$root.profilePicture}}" err-src="images/usercover1.jpg" class="md-whiteframe-10dp" ng-mouseenter="profile.changeProfilePicture = true" />
+                        <div ng-click="profile.editProfilePic($event);" class="profile-image-edit-overlay" ng-show="profile.changeProfilePicture" ng-mouseleave="profile.changeProfilePicture = false" layout="row" layout-align="center center">
+                            <p>Change
+                                <br> Profile Picture</p>
+                        </div>
+                        <div class="profile-image-edit-overlay" ng-if="profile.progressCircle" layout="row" layout-sm="column" layout-align="space-around">
+                            <md-progress-circular style="padding-top: 20px !important; z-index:2;" md-mode="indeterminate"></md-progress-circular>
+                        </div>
+                        <input id="myInput" type="file" file-model="myFile" style="visibility:hidden;" onchange="angular.element(this).scope().profile.fileChanged(this)">
+                        <div layout="row" layout-align="space-between center" ng-show="profile.showEdit" style="width:100%;">
+                            <md-button class="md-raised md-primary" ng-click="profile.editProfile()" flex="75">
+                                Edit Info</md-button>
+                            <md-button class="md-accent md-raised" ng-click="profile.changePassword($event)" flex="20">
+                                <md-icon md-svg-src="icons/ic_security_24px.svg"></md-icon>
+                                <md-tooltip>Change Password</md-tooltip>
+                            </md-button>
+                        </div>
+                        <div layout="row" layout-align="space-between center" ng-hide="profile.showEdit" style="width:100%;">
+                            <md-button class="md-raised md-primary" ng-click="profile.saveProfile()" flex="75">
+                                Save Info</md-button>
+                            <md-button class="md-accent md-raised" ng-click="profile.cancelChanges()" flex="20">
+                                <md-icon md-svg-src="icons/ic_close_24px.svg"></md-icon>
+                                <md-tooltip>revert changes</md-tooltip>
+                            </md-button>
+                        </div>
+
+                        <!--
+                        <center style="z-index:2;">
+                            <div ng-click="editProfilePic($event);" style="position: relative;
+						height: 100px;
+						width: 100px;
+						background-color: rgba(48, 49, 50, 0.44);
+						margin-top: -100px;
+						border-radius: 100%; cursor:pointer;" ng-show="changeProfilePicture" ng-mouseleave="changeProfilePicture = false" layout="row" layout-align="center center">
+                                <md-icon md-svg-icon="icons/ic_edit_24px.svg" class="cad24" alt="edit Profile Pic"></md-icon>
+                            </div>
+                            <div style="position: relative;
+						height: 100px;
+						width: 100px;
+						margin-top: -100px;
+                            z-index:2;
+						border-radius: 100%;" ng-if="progressCircle" layout="row" layout-sm="column" layout-align="space-around">
+                                <md-progress-circular style="padding-top: 20px !important; z-index:2;" md-mode="indeterminate"></md-progress-circular>
+                            </div>
+                        </center>
+-->
+                    </div>
+                    <div layout="column" layout-align-gt-sm="end start" layout-align="start center" class="profile-banner-info">
+                        <p>
+                            <md-icon md-svg-icon="icons/ic_work_24px.svg"></md-icon>{{profile.content.Company}}</p>
+                        <h2>{{profile.content.Name}}</h2>
+
+                        <p>
+                            <md-icon md-svg-icon="icons/ic_email_24px.svg" class="iconColor"></md-icon>{{profile.content.Email}}</p>
+                        <p>
+                            <md-icon md-svg-icon="icons/ic_home_24px.svg"></md-icon>{{profile.content.BillingAddress}} </p>
+                        <p>
+                            <md-icon md-svg-icon="icons/ic_call_24px.svg"></md-icon>{{profile.content.PhoneNumber}}</p>
+                    </div>
+                </div>
+
+                <div class="profile-content-banner profile-info-edit-view" layout="column" layout-align="start center" ng-hide="profile.showEdit">
+                    <div class="profile-content-flat">
+                        <form name="profile.editForm" ng-submit="submit()">
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Email</label>
+                                    <md-icon md-svg-icon="icons/ic_email_24px.svg"></md-icon>
+                                    <input ng-required="true" type="email" name="email" ng-pattern="/^.+@.+\..+$/" ng-model="profile.content.Email" ng-disabled="true" id="emailBox">
+                                    <div ng-messages="profile.editForm.email.$error">
+                                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> Invalid Email </div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Name</label>
+                                    <md-icon md-svg-icon="icons/ic_person_24px.svg"></md-icon>
+                                    <input ng-required="true" name="name" ng-pattern="" ng-model="profile.content.Name">
+                                    <div ng-messages="profile.editForm.name.$error">
+                                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> </div>
+                                    </div>
+                                </md-input-container>
+                                <md-input-container class="md-icon-float md-block" flex-gt-sm>
+                                    <label>Phone Number</label>
+                                    <md-icon md-svg-icon="icons/ic_call_24px.svg"></md-icon>
+                                    <input ng-required="true" name="phoneNumber" ng-model="profile.content.PhoneNumber">
+                                    <div class="hint" style="margin-left: 35px;">7xxxxxxxx</div>
+                                </md-input-container>
+                            </div>
+                            <div layout="row">
+
+                                <md-input-container class=" md-block" flex-gt-sm style="width:100%">
+                                    <label>
+                                        Billing Address</label>
+                                    <md-icon md-svg-icon="icons/ic_my_location_24px.svg"></md-icon>
+                                    <input ng-required="true" ng-model="profile.content.BillingAddress" md-maxlength="150">
+                                    <!--                            <textarea ng-required="true" minlength="null"  rows="5" ng-model="content.BillingAddress"></textarea>-->
+                                </md-input-container>
+                            </div>
+
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block md-icon-float" flex-gt-sm>
+                                    <label>Country</label>
+                                    <md-icon md-svg-icon="icons/ic_home_24px.svg"></md-icon>
+                                    <input ng-required="false" name="country" ng-pattern="" ng-model="profile.content.Country"> </md-input-container>
+                                <md-input-container class="md-block md-icon-float" flex-gt-sm>
+                                    <label>Zip Code</label>
+                                    <md-icon md-svg-icon="icons/ic_place_24px.svg"></md-icon>
+                                    <input ng-required="false" name="zipCode" ng-pattern="" ng-model="profile.content.ZipCode"> </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block md-icon-float" flex-gt-sm>
+                                    <label>Company</label>
+                                    <md-icon md-svg-icon="icons/ic_work_24px.svg"></md-icon>
+                                    <input ng-required="false" name="country" ng-pattern="" ng-model="profile.content.Company"> </md-input-container>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="center center" class="profile-nav" ng-show="profile.showEdit">
+                    <md-button ng-click="profile.profileIndex = 0;" ng-class="{'md-primary':profile.profileIndex === 0,'md-raised':profile.profileIndex ===0}">
+                        <md-icon md-svg-icon="icons/ic_credit_card_24px.svg"></md-icon>
+                    </md-button>
+                    <md-button ng-click="profile.profileIndex = 1;" ng-class="{'md-primary':profile.profileIndex === 1,'md-raised':profile.profileIndex ===1}">
+                        <md-icon md-svg-icon="icons/ic_account_balance_wallet_24px.svg"></md-icon>
+                    </md-button>
+                    <md-button ng-click="profile.profileIndex = 2;" ng-class="{'md-primary':profile.profileIndex === 2,'md-raised':profile.profileIndex ===2}">
+                        <md-icon md-svg-icon="icons/ic_history_24px.svg"></md-icon>
+                    </md-button>
+                </div>
+                <!--            <md-divider class="profile-content-divider"></md-divider>-->
+                <div class="profile-content-banner" layout="column" layout-align="start center" style="margin-top:-34px;background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));border-top: 1px solid rgba(158,158,158,0.2);" ng-show="profile.showEdit">
+                    <md-tabs md-dynamic-height md-border-bottom style="width:100%;" md-selected="profile.profileIndex" ng-init="profile.profileIndex = 0;">
+                        <md-tab label="cards">
+                            <div layout="column" layout-align="start center" style="width:100%;">
+                                <div class="profile-content-flat" layout="column" layout-align="start center">
+                                    <div class="title" layout="row" layout-align="space-between center">
+                                        <p>Your Cards</p>
+                                        <md-button class=" md-primary" aria-label="add" ng-click="profile.newCard($event)">
+                                            <md-icon md-svg-src="icons/ic_add_24px.svg"></md-icon>
+                                            Add new Card
+                                        </md-button>
+                                    </div>
+                                    <div layout="row" layout-align-gt-sm="start start" layout-align="center start" style="width:100%;overflow:hidden;" layout-wrap>
+                                        <!--                                    ng-repeat="card in account.AccountCards"-->
+                                        <div layout="column" layout-align="start center" class="profile-credit-card-container-content" ng-repeat="card in profile.account.AccountCards">
+                                            <credit-card card="card"></credit-card>
+                                            <div layout="row" layout-align="center center" class="footer">
+                                                <md-button ng-click="profile.editCard($event, card);$event.stopPropagation()">
+                                                    Edit
+                                                </md-button> |
+                                                <md-button class="md-primary" ng-if="!card.default == true" ng-click="profile.makeDefault($event, card);$event.stopPropagation()">set Default</md-button>
+                                                <span ng-if="card.default == true">Default</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-tab>
+                        <md-tab label="wallet">
+                            <div layout="column" layout-align="start center" style="width:100%;">
+                                <div class="profile-content-flat" class="md-padding">
+                                    <div class="title" layout="row" layout-align="space-between center">
+                                        <p>Your Transactions</p>
+
+                                    </div>
+                                    <div class="profile-content-flat" layout="row" layout-align="space-around center">
+                                        <div layout="column" layout-align="start center" class="wallet-side" flex>
+                                            <p class="currency">{{0 | currency}}</p>
+                                            <p>Inflows</p>
+                                        </div>
+                                        <div layout="column" layout-align="start center" class="wallet" flex>
+                                            <p class="currency">{{0 | currency}}</p>
+                                            <p>Availale</p>
+                                        </div>
+                                        <div layout="column" layout-align="start center" class="wallet-side" flex>
+                                            <p class="currency">{{0 | currency}}</p>
+                                            <p>outflaws</p>
+                                        </div>
+                                    </div>
+                                    <md-list>
+                                        <div flex="100">
+                                            <center ng-if="profile.ledger.length == 0" style="padding:20px;font-size:30px;font-weight:700">No Transactions Yet!</center>
+                                        </div>
+
+                                        <md-list-item class="md-2-line profile-content-list-item" ng-repeat="transaction in profile.ledger">
+                                            <div class="md-list-item-text">
+                                                <h3>Reference Num : {{transaction.TranNo}}</h3>
+                                                <p>{{transaction.TranDate}}</p>
+                                            </div>
+                                            <div class="md-secondary" layout="row" layout-align="start center" flex="50" style="width:100%;color:">
+                                                <h5 flex="60"> {{transaction.TranType}}</h5>
+                                                <h3 flex> {{transaction.Amount}}</h3>
+                                            </div>
+                                        </md-list-item>
+                                    </md-list>
+
+                                </div>
+                            </div>
+                        </md-tab>
+                        <md-tab label="Order History">
+                            <div layout="column" layout-align="start center" style="width:100%;">
+                                <div class="profile-content-flat" class="md-padding">
+                                    <!--
+                                <div layout="row" layout-align="space-around center" style="color:white;font-size:16px">
+                                    <div flex layout="row" layout-align="start center" style="padding-left:10px">
+                                        <div style="height:40px;"></div><span>Date/ Time</span></div> <span flex>Order Number</span> <span flex="40">Product/ Service</span> <span flex>Total</span> <span flex>Status</span> </div>
+-->
+                                    <div class="title" layout="row" layout-align="space-between center">
+                                        <p>Your Payment History</p>
+                                    </div>
+
+                                    <md-list>
+                                        <div flex="100">
+                                            <center ng-if="profile.paymentHistory.length == 0" style="padding:20px;font-size:30px;font-weight:700">No Payment History Yet!</center>
+                                        </div>
+
+                                    </md-list>
+                                </div>
+                            </div>
+                        </md-tab>
+                    </md-tabs>
+                </div>
+
+            </div>
+            <!--CARD CONTAINER END-->
+        </div>
+    </frameworkapp-container>
+</coreapp-container>
+<div style="position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.26);" ng-show="profile.showGlobalProgress" layout="column" layout-align="center center">
+    <md-progress-circular md-mode='indeterminate' md-diameter="150" style="z-index:2000;"></md-progress-circular>
+</div>

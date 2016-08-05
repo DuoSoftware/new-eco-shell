@@ -1,0 +1,57 @@
+<md-dialog ng-init="introIndex=0;">
+    <md-tabs md-dynamic-height style="margin-top:-48px;width:100%;" md-selected="introIndex">
+        <md-tab label="1">
+            <md-content layout="column" layout-align="start start" style="overflow:hidden;width:100%;max-width:700px;">
+                <div style="background-image:url(images/adas.jpg);height:55vh;width:100%;"></div>
+                <!--                <img src="images/adas.jpg" class="intro-image">-->
+                <div class="intro-image-overlay">
+
+                </div>
+                <div layout="column" layout-align="center start" class="intro-info">
+                    <h1>Hey X! 1</h1>
+                    <span>lorem ipsum lorem ipsum lorem ipsum lorem ipsum v vlorem ipsum lorem ipsum lorem ipsum lorem ipsum v lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum </span>
+
+                </div>
+                <div layout="row" layout-align="end center" class="intro-footer">
+                    <md-button class="md-primary" ng-click="introIndex = introIndex+1;">Next</md-button>
+                </div>
+            </md-content>
+        </md-tab>
+        <md-tab label="2">
+            <md-content layout="column" layout-align="start start" style="overflow:hidden;width:100%;max-width:700px;">
+                <div style="background-image:url(images/adas.jpg);height:55vh;width:100%;"></div>
+                <!--                <img src="images/adas.jpg" class="intro-image">-->
+                <div class="intro-image-overlay">
+
+                </div>
+                <div layout="column" layout-align="center start" class="intro-info">
+                    <h1>Hey X! 2</h1>
+                    <span>lorem ipsum lorem ipsum lorem ipsum lorem ipsum v vlorem ipsum lorem ipsum lorem ipsum lorem ipsum v lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum </span>
+
+                </div>
+                <div layout="row" layout-align="end center" class="intro-footer">
+                    <md-button class="md-primary" ng-click="introIndex = introIndex-1;">Prev</md-button>
+                    <md-button class="md-primary" ng-click="introIndex = introIndex+1;">Next</md-button>
+                </div>
+            </md-content>
+        </md-tab>
+        <md-tab label="3">
+            <md-content layout="column" layout-align="start start" style="overflow:hidden;width:100%;max-width:700px;">
+                <div style="background-image:url(images/adas.jpg);height:55vh;width:100%;"></div>
+                <!--                <img src="images/adas.jpg" class="intro-image">-->
+                <div class="intro-image-overlay">
+
+                </div>
+                <div layout="column" layout-align="center start" class="intro-info">
+                    <h1>Hey X! 3</h1>
+                    <span>lorem ipsum lorem ipsum lorem ipsum lorem ipsum v vlorem ipsum lorem ipsum lorem ipsum lorem ipsum v lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum </span>
+
+                </div>
+                <div layout="row" layout-align="end center" class="intro-footer">
+                    <md-button class="md-primary" ng-click="introIndex = introIndex-1;">Prev</md-button>
+                    <md-button class="md-primary" ng-click="closeIntro();">Finish</md-button>
+                </div>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</md-dialog>

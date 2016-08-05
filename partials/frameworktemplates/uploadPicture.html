@@ -1,0 +1,46 @@
+<md-dialog aria-label="Upload Picture" ng-cloak style="min-width:400px;">
+    <form name="editForm" ng-submit="submit()">
+        <!--
+        <md-toolbar class="modal-header" style="background:#424242">
+            <div class="md-toolbar-tools profile-toolbar">
+                <h2>Upload Picture</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel();" type="button" aria-label="Close">
+                    <md-icon md-svg-icon="icons/ic_close_24px.svg" style="fill:white"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+-->
+        <md-content layout-padding layout="column" layout-align="start center" md-theme="{{$root.shellConfig.themeconfiguration.palettename}}-{{$root.shellConfig.themeconfiguration.theme}}" md-theme-watch="true">
+
+            <div class='row' ng-if='theImage1 != undefined'>
+                <ng-croppie ng-model='output' update='onUpdate' boundry="{w: 300, h: 300}" viewport="{w: 200, h:200}" mousezoom="true" zoom="true" src="theImage1">
+                </ng-croppie>
+                <img id="youtubeimg" src='{{output}}' style="display:none" />
+
+            </div>
+
+            <div class='row' ng-if='theImage1 == undefined'>
+                <img ng-src="images/usercover1.jpg" width="200" height="200">
+            </div>
+
+            <input id='fileInput' accept="image/x-png, image/gif, image/jpeg" custom-on-change="fileChanged" type='file' style="display:none" />
+
+
+            <div layout="row" layout-align="space-between center" style="width:100%;" layout-padding>
+                <md-button class="md-primary" type="button" onclick="$('#fileInput').click();">
+                    Select an Image
+                </md-button>
+                <div layout="row" layout-align="end center">
+                    <md-button ng-click="cancel()">
+                        cancel
+                    </md-button>
+                    <md-button type="submit" class="md-primary" ng-disabled="disableUploadBtn">
+                        Upload
+                    </md-button>
+                </div>
+
+            </div>
+        </md-content>
+    </form>
+</md-dialog>

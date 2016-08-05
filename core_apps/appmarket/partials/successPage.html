@@ -1,0 +1,72 @@
+<md-dialog aria-label="successPage">
+  <md-toolbar class="modal-header" style="background:#455A64">
+    <div class="md-toolbar-tools">
+      <div layout="row" layout-align="center center">
+		<ng-md-icon icon="thumb_up" style="fill:#4CAF50; padding-right: 20px;" size="24px"></ng-md-icon>
+		<h2>Order Successful</h2>
+	  </div>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="ok()" aria-label="Close">
+        <ng-md-icon icon="close" style="fill:white;" size="24px"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+	<md-content class="md-padding" ng-if="status == 'Success'" style="background:transparent">
+		<div layout="row" layout-align="start start">
+			<img ng-src="{{installedApp.iconUrl}}" style="min-width:60px;height:60px;border-radius:60px;" flex="10" />
+			<div style="padding-top:12px;margin-left:10px" flex>
+				You have successfully installed the '{{installedApp.name}}' application.
+			</div>
+		</div>
+		<!--div layout="row" layout-align="start start" style="margin-top:40px;">
+			<div flex>
+			Transaction ID: {{result.TranID}}
+			</div>
+		</div-->
+		<div layout="row" layout-align="start start" style="margin-top:40px;">
+			<div flex>
+			Transaction Date: {{TranDate}}
+			</div>
+		</div>
+		<div layout="row" layout-align="start start">
+			<div flex style="font-weight:700">
+			<h3>Total Price Charged: <span style="color:#388E3C">{{installedApp.price | currency}}</span></h3>
+			</div>
+		</div>
+				<ng-md-icon icon="shopping_cart" style="margin-top: 18px;margin-right: 18px;fill:#E5E5E5;bottom:20px;right:20px;height:200px;width:200px;position:fixed;z-index:-1" size="200px"></ng-md-icon>
+	</md-content>
+	
+	<md-content class="md-padding" ng-if="status == 'Error'">
+		<div layout="row" layout-align="start start">
+			<img src="img/error.png" flex="10"/>
+			
+			<div style="padding-top:5px;margin-left:10px" flex>
+				This application failed to install.
+			</div>
+			
+			
+		</div>
+		
+		<div layout="row" layout-align="start start" style="margin-top:40px;">
+			<div style="width:400px">{{Message}}</div>
+		</div>
+		
+	</md-content>
+      
+  <md-divider></md-divider>
+  <md-dialog-actions layout="row">
+	<div layout="column" layout-align="start start">
+		
+		 <div layout="row">
+			<span style="font-size: 12px;margin-top:5px;margin-left:15px;">Powered by Cloud Charge</span>
+		</div>
+	 </div>
+	 
+	
+    <span flex></span>
+	
+    <md-button type="submit" ng-click="ok()" class="md-raised md-primary" style="margin-right:20px;width:100px;background:#455A64" >
+      ok
+    </md-button>
+  </md-dialog-actions >
+</md-dialog>
